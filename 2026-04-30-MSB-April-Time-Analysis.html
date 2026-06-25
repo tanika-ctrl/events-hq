@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MSB — April 2026 | Time & Activity Analysis</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    background: #f4f4f2;
+    color: #1a1a1a;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 48px 56px;
+  }
+
+  /* Header */
+  .doc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 3px solid #1a1a1a;
+    padding-bottom: 14px;
+    margin-bottom: 40px;
+  }
+  .doc-header .left {
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+  }
+  .doc-header .right {
+    font-size: 11px;
+    color: #666;
+  }
+
+  /* Section headings */
+  h1 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+  h2 {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 16px;
+    margin-top: 40px;
+    color: #444;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 6px;
+  }
+
+  /* Summary metric cards */
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+  .metric-card {
+    background: #f7f7f7;
+    border: 1px solid #e8e8e8;
+    padding: 18px 16px 14px;
+    border-radius: 2px;
+  }
+  .metric-card .value {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .metric-card .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #888;
+    margin-bottom: 4px;
+  }
+  .metric-card .note {
+    font-size: 11px;
+    color: #666;
+  }
+
+  /* Context banner */
+  .context-banner {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 16px 20px;
+    border-radius: 2px;
+    margin-bottom: 32px;
+    font-size: 12px;
+    line-height: 1.7;
+  }
+  .context-banner strong {
+    color: #fff;
+  }
+
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-bottom: 32px;
+  }
+  thead tr {
+    background: #1a1a1a;
+    color: #fff;
+  }
+  thead th {
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  thead th.r { text-align: right; }
+  tbody tr:nth-child(even) { background: #f7f7f7; }
+  tbody tr:hover { background: #f0f0f0; }
+  tbody td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #ececec;
+    vertical-align: top;
+  }
+  tbody td.r { text-align: right; }
+  tbody td.muted { color: #888; }
+  tfoot tr { background: #1a1a1a; color: #fff; }
+  tfoot td {
+    padding: 10px 12px;
+    font-weight: 700;
+    font-size: 12px;
+  }
+  tfoot td.r { text-align: right; }
+
+  /* Bar chart */
+  .bar-section { margin-bottom: 32px; }
+  .bar-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .bar-label {
+    width: 140px;
+    font-size: 12px;
+    flex-shrink: 0;
+    color: #333;
+  }
+  .bar-track {
+    flex: 1;
+    background: #ececec;
+    height: 22px;
+    border-radius: 1px;
+    overflow: hidden;
+    position: relative;
+  }
+  .bar-fill {
+    height: 100%;
+    background: #1a1a1a;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    transition: width 0.6s ease;
+    white-space: nowrap;
+    min-width: 60px;
+  }
+  .bar-fill.accent { background: #555; }
+  .bar-num {
+    font-size: 12px;
+    font-weight: 600;
+    min-width: 42px;
+    text-align: right;
+    color: #1a1a1a;
+  }
+
+  /* Timeline / entries */
+  .entry-list { margin-bottom: 32px; }
+  .entry-row {
+    display: flex;
+    gap: 16px;
+    padding: 11px 14px;
+    border-bottom: 1px solid #ececec;
+    align-items: flex-start;
+  }
+  .entry-row:nth-child(even) { background: #f7f7f7; }
+  .entry-date {
+    font-size: 11px;
+    color: #888;
+    min-width: 72px;
+    padding-top: 1px;
+  }
+  .entry-person {
+    font-weight: 600;
+    font-size: 11px;
+    min-width: 28px;
+    padding-top: 1px;
+    color: #444;
+  }
+  .entry-desc { flex: 1; font-size: 12px; }
+  .entry-hours {
+    font-weight: 700;
+    font-size: 13px;
+    min-width: 36px;
+    text-align: right;
+  }
+  .entry-tier {
+    font-size: 10px;
+    background: #e8e8e8;
+    padding: 2px 6px;
+    border-radius: 2px;
+    color: #555;
+    min-width: 46px;
+    text-align: center;
+    margin-top: 1px;
+  }
+
+  /* Month comparison */
+  .month-compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .month-card {
+    border: 1px solid #e8e8e8;
+    padding: 16px 18px;
+    border-radius: 2px;
+  }
+  .month-card .month-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #888;
+    margin-bottom: 8px;
+  }
+  .month-card .month-hours {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .month-card .month-detail {
+    font-size: 11px;
+    color: #666;
+    line-height: 1.6;
+  }
+  .month-card.dark {
+    background: #1a1a1a;
+    border-color: #1a1a1a;
+    color: #fff;
+  }
+  .month-card.dark .month-label { color: #aaa; }
+  .month-card.dark .month-detail { color: #bbb; }
+
+  /* Highlights */
+  .highlight-block {
+    margin-bottom: 20px;
+    padding: 16px 18px;
+    border-left: 3px solid #1a1a1a;
+    background: #f7f7f7;
+  }
+  .highlight-block .hl-title {
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+  .highlight-block .hl-body {
+    font-size: 12px;
+    color: #444;
+    line-height: 1.7;
+  }
+
+  /* Analysis prose */
+  .analysis p {
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 16px;
+    color: #2a2a2a;
+  }
+
+  /* Footer */
+  .doc-footer {
+    margin-top: 48px;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 14px;
+    font-size: 11px;
+    color: #999;
+    text-align: center;
+  }
+
+  /* Print */
+  @media print {
+    body { background: #fff; }
+    .page { padding: 24px 32px; }
+    h2 { margin-top: 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="doc-header">
+    <div class="left">MSB — April 2026 | Time &amp; Activity Analysis</div>
+    <div class="right">Prepared by Subsurface &nbsp;·&nbsp; 30 April 2026 &nbsp;·&nbsp; Source: Timesheet v009</div>
+  </div>
+
+  <!-- SUMMARY METRICS -->
+  <h1>Summary</h1>
+
+  <div class="metric-grid">
+    <div class="metric-card">
+      <div class="label">Total Hours</div>
+      <div class="value">10.5</div>
+      <div class="note">April 2026 · MSB</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">Team Members</div>
+      <div class="value">1</div>
+      <div class="note">CJ only</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">Work Type</div>
+      <div class="value" style="font-size:18px; padding-top:4px;">Video</div>
+      <div class="note">100% — Training videos</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">Entries</div>
+      <div class="value">5</div>
+      <div class="note">4 active weeks · Cat A</div>
+    </div>
+  </div>
+
+  <!-- CONTEXT BANNER -->
+  <div class="context-banner">
+    <strong>Project context:</strong> MSB (Morris Shea Berg) is a training video production engagement. In March, RD led a major production push (~120h+ across 5–31 March), with CJ joining from 23 March on training video editing and RK providing 6h of admin/direction on 19 March. April represents the continuation phase — RD's intensive production work concluded and CJ is maintaining ongoing editing and review output as the project enters its later stages.
+  </div>
+
+  <!-- MONTH COMPARISON -->
+  <h2>March → April Comparison</h2>
+
+  <div class="month-compare">
+    <div class="month-card dark">
+      <div class="month-label">March 2026 — Production Phase</div>
+      <div class="month-hours">~126h+</div>
+      <div class="month-detail">
+        RD — primary editor, 5–31 March<br>
+        CJ — training video support, 23 Mar+<br>
+        RK — admin &amp; direction, 19 Mar (6h)<br>
+        <em>Intensive multi-person sprint</em>
+      </div>
+    </div>
+    <div class="month-card">
+      <div class="month-label">April 2026 — Continuation Phase</div>
+      <div class="month-hours">10.5h</div>
+      <div class="month-detail">
+        CJ — sole contributor, 5 sessions<br>
+        MSB training videos (all entries)<br>
+        All billed at Cat A Expert Work<br>
+        <em>Steady maintenance cadence</em>
+      </div>
+    </div>
+  </div>
+
+  <!-- WORK TYPE BREAKDOWN -->
+  <h2>Hours by Work Type</h2>
+  <div class="bar-section">
+    <div class="bar-row">
+      <div class="bar-label">Video Editing</div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:100%">10.5h — 100%</div>
+      </div>
+      <div class="bar-num">10.5h</div>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Work Type</th>
+        <th class="r">Hours</th>
+        <th class="r">% of Month</th>
+        <th>Tier</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Video Editing</td>
+        <td class="r">10.5h</td>
+        <td class="r">100%</td>
+        <td>Cat A — Expert Work</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>TOTAL</td>
+        <td class="r">10.5h</td>
+        <td class="r">100%</td>
+        <td></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <!-- TEAM BREAKDOWN -->
+  <h2>Team Breakdown</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Person</th>
+        <th class="r">Hours</th>
+        <th class="r">% of Month</th>
+        <th>Work Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>CJ</td>
+        <td class="r">10.5h</td>
+        <td class="r">100%</td>
+        <td>Video Editing</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>TOTAL</td>
+        <td class="r">10.5h</td>
+        <td class="r">100%</td>
+        <td></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <!-- ALL ENTRIES -->
+  <h2>April Entries — Full Log</h2>
+
+  <div class="entry-list">
+    <div class="entry-row" style="background:#1a1a1a; color:#fff; border:none;">
+      <div class="entry-date" style="color:#aaa;">Date</div>
+      <div class="entry-person" style="color:#aaa;">Who</div>
+      <div class="entry-desc" style="color:#aaa;">Description</div>
+      <div class="entry-tier" style="background:#444;color:#ccc;">Tier</div>
+      <div class="entry-hours" style="color:#aaa;">Hours</div>
+    </div>
+    <div class="entry-row">
+      <div class="entry-date">01 Apr 2026</div>
+      <div class="entry-person">CJ</div>
+      <div class="entry-desc">MSB videos</div>
+      <div class="entry-tier">Cat A</div>
+      <div class="entry-hours">1.5h</div>
+    </div>
+    <div class="entry-row">
+      <div class="entry-date">08 Apr 2026</div>
+      <div class="entry-person">CJ</div>
+      <div class="entry-desc">MSB training videos</div>
+      <div class="entry-tier">Cat A</div>
+      <div class="entry-hours">2.0h</div>
+    </div>
+    <div class="entry-row">
+      <div class="entry-date">09 Apr 2026</div>
+      <div class="entry-person">CJ</div>
+      <div class="entry-desc">MSB training videos</div>
+      <div class="entry-tier">Cat A</div>
+      <div class="entry-hours">3.0h</div>
+    </div>
+    <div class="entry-row">
+      <div class="entry-date">10 Apr 2026</div>
+      <div class="entry-person">CJ</div>
+      <div class="entry-desc">MSB training videos</div>
+      <div class="entry-tier">Cat A</div>
+      <div class="entry-hours">2.0h</div>
+    </div>
+    <div class="entry-row">
+      <div class="entry-date">22 Apr 2026</div>
+      <div class="entry-person">CJ</div>
+      <div class="entry-desc">MSB Training videos</div>
+      <div class="entry-tier">Cat A</div>
+      <div class="entry-hours">2.0h</div>
+    </div>
+  </div>
+
+  <!-- HIGHLIGHTS -->
+  <h2>April Highlights</h2>
+
+  <div class="highlight-block">
+    <div class="hl-title">CJ Holding the Line Post-RD Sprint</div>
+    <div class="hl-body">After RD's intensive March production phase — which appears to have been the primary video build-out for the MSB engagement — CJ is maintaining ongoing editing and review output through April. Five sessions across the month, ranging from 1.5 to 3 hours, suggest review-and-revise cycles rather than fresh production. This is consistent with a project in its later stages: primary content built, now refined and finalised.</div>
+  </div>
+
+  <div class="highlight-block">
+    <div class="hl-title">Concentrated Activity: 8–10 April</div>
+    <div class="hl-body">Three consecutive or near-consecutive days (8, 9, 10 April) totalling 7 hours in three days suggests a delivery push — likely a client milestone, feedback round, or submission deadline in that window. The 3-hour session on 9 April is the longest single entry in the month, consistent with a focused editing or rendering session.</div>
+  </div>
+
+  <div class="highlight-block">
+    <div class="hl-title">Gap — 10 to 22 April (12 Days)</div>
+    <div class="hl-body">There is a 12-day gap between 10 April and the final entry on 22 April. This may reflect client feedback turnaround time — CJ would have submitted a package around 8–10 April, and returned to complete revisions or a final pass on 22 April. Alternatively, CJ's capacity was absorbed by DBR yard and office work during this period (CJ's DBR April logs show 22h office/yard and 8h admin).</div>
+  </div>
+
+  <div class="highlight-block">
+    <div class="hl-title">100% Cat A Billing</div>
+    <div class="hl-body">All five entries are billed at Cat A (Expert Work). This is the correct tier for skilled video editing and post-production. Consistent categorisation across all MSB entries suggests the billing structure for this client is well-established and the scope is clearly defined.</div>
+  </div>
+
+  <!-- ANALYSIS -->
+  <h2>Analysis</h2>
+
+  <div class="analysis">
+    <p>April's MSB hours tell a clear story: the intensive production sprint is done and the project is in its finishing phase. 10.5 hours from a single team member (CJ) represents tidy, controlled activity — enough to keep the engagement moving, not so much that it's consuming disproportionate capacity.</p>
+
+    <p>The contrast with March is significant. March was a multi-person, high-volume engagement led by RD, likely covering the core content production — scripting, raw editing, sequencing. April's CJ-only activity at lower volume points to a handover: RD's production work concluded, and CJ is handling final refinements, corrections, and delivery formatting. This is a normal and healthy project trajectory for a training video engagement of this kind.</p>
+
+    <p>The 8–10 April cluster is notable. Seven hours in three days, followed by silence for twelve days, followed by one closing 2-hour session suggests a structured submission-and-revise cycle: deliver a package, wait for client review, then address final notes. If this interpretation is correct, the 22 April entry may represent the final delivery session.</p>
+
+    <p>CJ's bandwidth on MSB should be read alongside her DBR commitments in April. Across both clients, CJ logged 30 hours in April — 10.5h MSB (all video) and approximately 22h DBR (office/yard) plus 8h DBR admin. The MSB work is the only skilled output across CJ's April — everything else was operational. This raises a quiet question about how CJ's capacity is being allocated as DBR's physical build-out demands continue.</p>
+
+    <p>No concerns with the engagement as logged. If April 22 was the final session, this project may be approaching close-out — worth confirming the delivery status with the team and ensuring the client sign-off is captured.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    MSB — April 2026 Time Analysis &nbsp;·&nbsp; Source: Subsurface Timesheet v009 &nbsp;·&nbsp; Prepared 30 April 2026
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MSB — March & April 2026 | Time & Activity Analysis</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    background: #f4f4f2;
+    color: #1a1a1a;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .page {
+    max-width: 960px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 48px 56px;
+  }
+
+  /* Header */
+  .doc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 3px solid #1a1a1a;
+    padding-bottom: 14px;
+    margin-bottom: 40px;
+  }
+  .doc-header .left { font-weight: 700; font-size: 13px; letter-spacing: 0.02em; }
+  .doc-header .right { font-size: 11px; color: #666; }
+
+  h1 { font-size: 22px; font-weight: 700; margin-bottom: 20px; letter-spacing: -0.01em; }
+  h2 {
+    font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em;
+    margin-bottom: 16px; margin-top: 40px; color: #555;
+    border-bottom: 1px solid #e0e0e0; padding-bottom: 6px;
+  }
+
+  /* Metric grid */
+  .metric-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 32px;
+  }
+  .metric-card {
+    background: #f7f7f7; border: 1px solid #e8e8e8;
+    padding: 18px 16px 14px; border-radius: 2px;
+  }
+  .metric-card .value { font-size: 30px; font-weight: 700; line-height: 1; margin-bottom: 6px; }
+  .metric-card .label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: #888; margin-bottom: 4px; }
+  .metric-card .note { font-size: 11px; color: #666; }
+
+  /* Month comparison cards */
+  .month-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
+  .month-card { border: 1px solid #e8e8e8; padding: 20px 22px; border-radius: 2px; }
+  .month-card.dark { background: #1a1a1a; border-color: #1a1a1a; color: #fff; }
+  .month-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: #888; margin-bottom: 10px; }
+  .month-card.dark .month-label { color: #aaa; }
+  .month-hours { font-size: 40px; font-weight: 700; line-height: 1; margin-bottom: 8px; }
+  .month-sub { font-size: 11px; color: #555; line-height: 1.8; }
+  .month-card.dark .month-sub { color: #bbb; }
+  .month-person-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+  .mp-name { font-size: 11px; }
+  .mp-bar-track { flex: 1; background: #e0e0e0; height: 6px; margin: 0 10px; border-radius: 2px; }
+  .month-card.dark .mp-bar-track { background: #444; }
+  .mp-bar-fill { height: 100%; background: #1a1a1a; border-radius: 2px; }
+  .month-card.dark .mp-bar-fill { background: #fff; }
+  .mp-hours { font-size: 11px; font-weight: 600; min-width: 36px; text-align: right; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 32px; }
+  thead tr { background: #1a1a1a; color: #fff; }
+  thead th { padding: 10px 12px; text-align: left; font-weight: 600; font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; }
+  thead th.r { text-align: right; }
+  tbody tr:nth-child(even) { background: #f7f7f7; }
+  tbody td { padding: 10px 12px; border-bottom: 1px solid #ececec; vertical-align: top; }
+  tbody td.r { text-align: right; }
+  tbody td.muted { color: #999; }
+  tfoot tr { background: #1a1a1a; color: #fff; }
+  tfoot td { padding: 10px 12px; font-weight: 700; font-size: 12px; }
+  tfoot td.r { text-align: right; }
+
+  /* Bar chart */
+  .bar-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .bar-label { width: 150px; font-size: 12px; flex-shrink: 0; color: #333; }
+  .bar-track { flex: 1; background: #ececec; height: 24px; border-radius: 1px; overflow: hidden; }
+  .bar-fill {
+    height: 100%; background: #1a1a1a;
+    display: flex; align-items: center; padding-left: 10px;
+    color: #fff; font-size: 11px; font-weight: 600; white-space: nowrap; min-width: 80px;
+  }
+  .bar-fill.mid { background: #555; }
+  .bar-fill.light { background: #999; }
+  .bar-num { font-size: 12px; font-weight: 600; min-width: 44px; text-align: right; color: #1a1a1a; }
+
+  /* Phase timeline */
+  .timeline { margin-bottom: 32px; }
+  .phase-block {
+    display: flex; gap: 16px; padding: 14px 16px;
+    border-left: 3px solid #1a1a1a; margin-bottom: 8px; background: #f7f7f7;
+  }
+  .phase-block.accent { border-left-color: #888; background: #fafafa; }
+  .phase-dates { font-size: 11px; color: #888; min-width: 120px; padding-top: 2px; }
+  .phase-content { flex: 1; }
+  .phase-title { font-weight: 700; font-size: 12px; margin-bottom: 4px; }
+  .phase-detail { font-size: 11px; color: #555; line-height: 1.7; }
+  .phase-hours { font-size: 14px; font-weight: 700; min-width: 50px; text-align: right; padding-top: 2px; }
+
+  /* Entry log */
+  .entry-header {
+    display: grid; grid-template-columns: 90px 36px 1fr 60px 52px;
+    gap: 8px; background: #1a1a1a; color: #fff; padding: 10px 14px;
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;
+  }
+  .entry-row {
+    display: grid; grid-template-columns: 90px 36px 1fr 60px 52px;
+    gap: 8px; padding: 9px 14px; border-bottom: 1px solid #ececec; align-items: start;
+  }
+  .entry-row:nth-child(even) { background: #f7f7f7; }
+  .e-date { font-size: 11px; color: #888; }
+  .e-who { font-weight: 700; font-size: 11px; color: #444; }
+  .e-desc { font-size: 11px; line-height: 1.5; }
+  .e-tier { font-size: 10px; background: #e8e8e8; padding: 2px 5px; border-radius: 2px; color: #555; }
+  .e-hrs { font-weight: 700; font-size: 12px; text-align: right; }
+  .month-divider {
+    background: #f0f0f0; padding: 7px 14px;
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.07em;
+    font-weight: 700; color: #666; border-bottom: 1px solid #e0e0e0;
+  }
+
+  /* Highlights */
+  .highlight { padding: 16px 18px; border-left: 3px solid #1a1a1a; background: #f7f7f7; margin-bottom: 12px; }
+  .hl-title { font-weight: 700; font-size: 13px; margin-bottom: 5px; }
+  .hl-body { font-size: 12px; color: #444; line-height: 1.7; }
+
+  /* Analysis */
+  .analysis p { font-size: 13px; line-height: 1.8; margin-bottom: 16px; color: #2a2a2a; }
+
+  /* Footer */
+  .doc-footer {
+    margin-top: 48px; border-top: 1px solid #e0e0e0; padding-top: 14px;
+    font-size: 11px; color: #999; text-align: center;
+  }
+
+  @media print {
+    body { background: #fff; }
+    .page { padding: 24px 32px; }
+    h2 { margin-top: 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="doc-header">
+    <div class="left">MSB (Morris Shea Berg) — March &amp; April 2026 | Time &amp; Activity Analysis</div>
+    <div class="right">Prepared by Subsurface &nbsp;·&nbsp; 30 April 2026 &nbsp;·&nbsp; Source: Timesheet v009</div>
+  </div>
+
+  <!-- SUMMARY -->
+  <h1>Summary</h1>
+
+  <div class="metric-grid">
+    <div class="metric-card">
+      <div class="label">Total Hours (2 months)</div>
+      <div class="value">165.5</div>
+      <div class="note">March + April 2026</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">Team Members</div>
+      <div class="value">3</div>
+      <div class="note">RD · CJ · RK</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">Primary Output</div>
+      <div class="value" style="font-size:17px; padding-top:6px;">Video</div>
+      <div class="note">Training video production</div>
+    </div>
+    <div class="metric-card">
+      <div class="label">Total Entries</div>
+      <div class="value">33</div>
+      <div class="note">March (27) · April (6)</div>
+    </div>
+  </div>
+
+  <!-- MONTH COMPARISON -->
+  <h2>Month-by-Month</h2>
+
+  <div class="month-compare">
+    <div class="month-card dark">
+      <div class="month-label">March 2026 — Production Sprint</div>
+      <div class="month-hours">150.5h</div>
+      <br>
+      <div class="month-person-row">
+        <span class="mp-name">RD</span>
+        <div class="mp-bar-track"><div class="mp-bar-fill" style="width:91.4%"></div></div>
+        <span class="mp-hours">137.5h</span>
+      </div>
+      <div class="month-person-row">
+        <span class="mp-name">CJ</span>
+        <div class="mp-bar-track"><div class="mp-bar-fill" style="width:4.7%"></div></div>
+        <span class="mp-hours">7.0h</span>
+      </div>
+      <div class="month-person-row">
+        <span class="mp-name">RK</span>
+        <div class="mp-bar-track"><div class="mp-bar-fill" style="width:4.0%"></div></div>
+        <span class="mp-hours">6.0h</span>
+      </div>
+    </div>
+    <div class="month-card">
+      <div class="month-label">April 2026 — Continuation &amp; Finish</div>
+      <div class="month-hours">15.0h</div>
+      <br>
+      <div class="month-person-row">
+        <span class="mp-name">CJ</span>
+        <div class="mp-bar-track"><div class="mp-bar-fill" style="width:100%; background:#1a1a1a;"></div></div>
+        <span class="mp-hours">15.0h</span>
+      </div>
+      <div class="month-person-row">
+        <span class="mp-name">RD</span>
+        <div class="mp-bar-track"><div class="mp-bar-fill" style="width:0%; background:#1a1a1a;"></div></div>
+        <span class="mp-hours">—</span>
+      </div>
+      <div class="month-person-row">
+        <span class="mp-name">RK</span>
+        <div class="mp-bar-track"><div class="mp-bar-fill" style="width:0%; background:#1a1a1a;"></div></div>
+        <span class="mp-hours">—</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOURS BY PERSON -->
+  <h2>Hours by Person — Combined</h2>
+
+  <div style="margin-bottom: 28px;">
+    <div class="bar-row">
+      <div class="bar-label">RD</div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:83.1%">137.5h — 83.1%</div>
+      </div>
+      <div class="bar-num">137.5h</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">CJ</div>
+      <div class="bar-track">
+        <div class="bar-fill mid" style="width:13.3%">22.0h — 13.3%</div>
+      </div>
+      <div class="bar-num">22.0h</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">RK</div>
+      <div class="bar-track">
+        <div class="bar-fill light" style="width:3.6%">6.0h</div>
+      </div>
+      <div class="bar-num">6.0h</div>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Person</th>
+        <th class="r">March</th>
+        <th class="r">April</th>
+        <th class="r">Total</th>
+        <th class="r">% of Total</th>
+        <th>Role on Project</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>RD</strong></td>
+        <td class="r">137.5h</td>
+        <td class="r muted">—</td>
+        <td class="r"><strong>137.5h</strong></td>
+        <td class="r">83.1%</td>
+        <td>Primary editor — research, production, delivery</td>
+      </tr>
+      <tr>
+        <td><strong>CJ</strong></td>
+        <td class="r">7.0h</td>
+        <td class="r">15.0h</td>
+        <td class="r"><strong>22.0h</strong></td>
+        <td class="r">13.3%</td>
+        <td>Training video editing; April continuation lead</td>
+      </tr>
+      <tr>
+        <td><strong>RK</strong></td>
+        <td class="r">6.0h</td>
+        <td class="r muted">—</td>
+        <td class="r"><strong>6.0h</strong></td>
+        <td class="r">3.6%</td>
+        <td>Admin, direction &amp; oversight</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>TOTAL</td>
+        <td class="r">150.5h</td>
+        <td class="r">15.0h</td>
+        <td class="r">165.5h</td>
+        <td class="r">100%</td>
+        <td></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <!-- WORK PHASES TIMELINE -->
+  <h2>Project Phases — March to April</h2>
+
+  <div class="timeline">
+    <div class="phase-block">
+      <div class="phase-dates">5–8 Mar</div>
+      <div class="phase-content">
+        <div class="phase-title">Phase 1 — Discovery &amp; Planning</div>
+        <div class="phase-detail">RD's opening sessions: meeting with Richard, initial shot list work, ChatGPT-assisted research on Terra Sonic drilling rig training content. Cat A and Cat B work — structured exploration of scope and content requirements.</div>
+      </div>
+      <div class="phase-hours">16.0h</div>
+    </div>
+    <div class="phase-block accent">
+      <div class="phase-dates">11–15 Mar</div>
+      <div class="phase-content">
+        <div class="phase-title">Phase 2 — Content Cataloguing</div>
+        <div class="phase-detail">Five consecutive days: RD watched all source footage, catalogued videos with timestamps, built the content library. Five 5–8h days. Systematic, methodical — the foundation for everything that follows.</div>
+      </div>
+      <div class="phase-hours">33.0h</div>
+    </div>
+    <div class="phase-block">
+      <div class="phase-dates">16–22 Mar</div>
+      <div class="phase-content">
+        <div class="phase-title">Phase 3 — Video Production (Control Panel &amp; Procedures)</div>
+        <div class="phase-detail">RD edits the control panel, grease points, fluids check, and shut-down procedure videos. Near-daily 6–8h sessions. CJ joins 23 March on training videos. This is the primary production sprint.</div>
+      </div>
+      <div class="phase-hours">59.5h</div>
+    </div>
+    <div class="phase-block accent">
+      <div class="phase-dates">19 Mar</div>
+      <div class="phase-content">
+        <div class="phase-title">RK — Admin &amp; Direction</div>
+        <div class="phase-detail">6h admin, direction, and oversight for RD and CJ. RK's sole entry in the engagement — confirms management involvement at a key production milestone.</div>
+      </div>
+      <div class="phase-hours">6.0h</div>
+    </div>
+    <div class="phase-block">
+      <div class="phase-dates">24–31 Mar</div>
+      <div class="phase-content">
+        <div class="phase-title">Phase 4 — Advanced Production (TSi, TUG, Safety, Manifold)</div>
+        <div class="phase-detail">RD shifts to Cat A billing — higher complexity production covering the TSi 150CC, TUG, safety, water manifold, and walk-around videos. CJ running parallel on training content. Two large-output days on 27 and 30 March.</div>
+      </div>
+      <div class="phase-hours">42.0h</div>
+    </div>
+    <div class="phase-block accent">
+      <div class="phase-dates">1–10 Apr</div>
+      <div class="phase-content">
+        <div class="phase-title">Phase 5 — Handover &amp; Training Video Finalisation</div>
+        <div class="phase-detail">RD exits the project. CJ takes over all MSB activity — four sessions between 1 and 10 April (8.5h), with a concentrated 3h day on 9 April suggesting a client submission window. All Cat A billing.</div>
+      </div>
+      <div class="phase-hours">8.5h</div>
+    </div>
+    <div class="phase-block accent">
+      <div class="phase-dates">22 Apr +</div>
+      <div class="phase-content">
+        <div class="phase-title">Phase 6 — Final Revisions &amp; Delivery</div>
+        <div class="phase-detail">Two further sessions after a 12-day gap — consistent with a client review cycle. CJ's 22 April entry (2h) plus one additional Cat A session (4.5h) suggests final revisions and close-out editing. This is likely the end-of-engagement activity.</div>
+      </div>
+      <div class="phase-hours">6.5h</div>
+    </div>
+  </div>
+
+  <!-- FULL LOG — MARCH -->
+  <h2>Full Entry Log</h2>
+
+  <div class="entry-header">
+    <div>Date</div>
+    <div>Who</div>
+    <div>Description</div>
+    <div>Tier</div>
+    <div style="text-align:right;">Hours</div>
+  </div>
+
+  <div class="month-divider">March 2026 — 150.5h total</div>
+
+  <div class="entry-row">
+    <div class="e-date">05 Mar</div><div class="e-who">RD</div>
+    <div class="e-desc">Meeting with Richard regarding training videos. Watched all previous training videos, look through footage</div>
+    <div class="e-tier">Cat A</div><div class="e-hrs">7.0h</div>
+  </div>
+  <div class="entry-row">
+    <div class="e-date">06 Mar</div><div class="e-who">RD</div>
+    <div class="e-desc">Short meeting with Richard, start editing google docs for shot list</div>
+    <div class="e-tier">Cat B</div><div class="e-hrs">1.5h</div>
+  </div>
+  <div class="entry-row">
+    <div class="e-date">08 Mar</div><div class="e-who">RD</div>
+    <div class="e-desc">Back and forth with ChatGPT about training for the Terra Sonic drilling rig, create shot list based on that and more</div>
+    <div class="e-tier">Cat B</div><div class="e-hrs">7.5h</div>
+  </div>
+  <div class="entry-row">
+    <div class="e-date">11 Mar</div><div class="e-who">RD</div>
+    <div class="e-desc">Watching videos, marking off what's captured, listing file names, locations and times</div>
+    <div class="e-tier">Cat B</div><div class="e-hrs">5.0h</div>
+  </div>
+  <div class="entry-row">
+    <div class="e-date">12 Mar</div><div class="e-who">RD</div>
+    <div class="e-desc">Watch more videos, add to list, watch GTD videos again</div>
+    <div class="e-tier">Cat B</div><div class="e-hrs">7.0h</div>
+  </div>
+  <div class="entry-row">
+    <div class="e-date">13 Mar</div><div class="e-who">RD</div>
+    <div class="e-desc">Watch more videos, add more to the list, list videos with time stamps</div>
+    <div class="e-tier">Cat B</div><div class="e-hrs">8.0h</div>
+  </div>
+  <div class="entry-row">
+    <div class="e-date">14 Mar</div><div class="e-who">RD</div>
+    <div class="e-desc">Watch more videos, add more to the list, list videos with time stamps</div>
+    <div class="e-tier">Cat B</div><div class="e-hrs">8.0h</div>
+  </div>
+  <div class="entry-row">
+    <div class="e-date">15 Mar</div><div class="e-who">RD</div>
+    <div class="e-desc">Review the last of the video, add to spreadsheet, read the manual a little more carefully, remove items from list</div>
+    <div class="e-tier">Cat B</div><div class="e-hrs">8.0h</div>
+  </div>
+  <div class="entry-row">
+    <div class="e-date">16 Mar</div><div class="e-who">RD</div>
+    <div class="e-desc">Control panel video edit, start adding video, create short alternative to solve some problems</div>
+    <div class="e-tier">Cat B</div><div class="e-hrs">6.0h</div>
+  </div>
+  <div class="entry-row">
+    <div class="e-date">17 Mar</div><div class="e-who">RD</div>
+    <div class="e-desc">Control panel video edit, add voice over, adjust timing, add more video to match controls</div>
+    <div class="e-tier">Cat B</div><div class="e-hrs">8.0h</div>
+  </div>
+  <div class="entry-row">
+    <div class="e-date">18 Mar</div><div class="e-who">RD</div>
+    <div class="e-desc">Control panel video edit, go through footage again, add more video/replace some video</div>
+    <div class="e-tier">Cat B</div><div class="e-hrs">7.0h</div>
+  </div>
+  <div class="entry-row">
+    <div class="e-date">19 Mar</div><div class="e-who">RD</div>
+    <div class="e-desc">Start and complete shut down procedures video edit, start daily maintenance edit</div>
+    <div class="e-tier">Cat B</div><div class="e-hrs">7.5h</div>
+  </div>
+  <div class="entry-row" style="background:#f0f0f0;">
+    <div class="e-date">19 Mar</div><div class="e-who">RK</div>
+    <div class="e-desc">Admin and Direction for RD and CJ</div>
+    <div class="e-tier">Cat B</div><div class="e-hrs">6.0h</div>
+  </div>
+  <div class="entry-row">
+    <div class="e-date">20 Mar</div><div class="e-who">RD</div>
+    <div class="e-desc">Short meeting with CJ, sort out grease points sub video, start filter check section, bring in some other video</div>
+    <div class="e-tier">Cat B</div><div class="e-hrs">8.0h</div>
+  </div>
+  <div class="entry-row">
+    <div class="e-date">21 Mar</div><div class="e-who">RD</div>
+    <div class="e-desc">Replace one voice-over file in grease points edit, add titles, go through some videos again, adjust spreads</div>
+    <div class="e-tier">Cat B</div><div class="e-hrs">3.0h</div>
+  </div>
+  <div class="entry-row">
+    <div class="e-date">22 Mar</div><div class="e-who">RD</div>
+    <div class="e-desc">Finish off fluids check video (minus titles!) and get half way through the manual override controls video edit</div>
+    <div class="e-tier">Cat B</div><div class="e-hrs">8.0h</div>
+  </div>
+  <div class="entry-row">
+    <div class="e-date">23 Mar</div><div class="e-who">CJ</div>
+    <div class="e-desc">Training Videos</div>
+    <div class="e-tier">Cat A</div><div class="e-hrs">1.5h</div>
+  </div>
+  <div class="entry-row">
+    <div class="e-date">24 Mar</div><div class="e-who">CJ</div>
+    <div class="e-desc">Training Videos</div>
+    <div class="e-tier">Cat A</div><div class="e-hrs">2.0h</div>
+  </div>
+  <div class="entry-row">
+    <div class="e-date">24 Mar</div><div class="e-who">RD</div>
+    <div class="e-desc">Finish off manual override valves video edit, finish off fluids check video edit, combine into maintenance video</div>
+    <div class="e-tier">Cat A</div><div class="e-hrs">9.0h</div>
+  </div>
+  <div class="entry-row">
+    <div class="e-date">25 Mar</div><div class="e-who">RD</div>
+    <div class="e-desc">Starting the TSi 150CC video edit and Safety video edit; upscale and send off</div>
+    <div class="e-tier">Cat A</div><div class="e-hrs">8.0h</div>
+  </div>
+  <div class="entry-row">
+    <div class="e-date">26 Mar</div><div class="e-who">CJ</div>
+    <div class="e-desc">Training Videos</div>
+    <div class="e-tier">Cat A</div><div class="e-hrs">3.5h</div>
+  </div>
+  <div class="entry-row">
+    <div class="e-date">27 Mar</div><div class="e-who">RD</div>
+    <div class="e-desc">Do the TUG video edit</div>
+    <div class="e-tier">Cat A</div><div class="e-hrs">8.0h</div>
+  </div>
+  <div class="entry-row">
+    <div class="e-date">27 Mar</div><div class="e-who">RD</div>
+    <div class="e-desc">Update safety edit with Crew Safety segment</div>
+    <div class="e-tier">Cat A</div><div class="e-hrs">2.5h</div>
+  </div>
+  <div class="entry-row">
+    <div class="e-date">30 Mar</div><div class="e-who">RD</div>
+    <div class="e-desc">Water manifold edit, raising mast edit, upscale and send off</div>
+    <div class="e-tier">Cat A</div><div class="e-hrs">7.5h</div>
+  </div>
+  <div class="entry-row">
+    <div class="e-date">31 Mar</div><div class="e-who">RD</div>
+    <div class="e-desc">Prep and walk around edit</div>
+    <div class="e-tier">Cat A</div><div class="e-hrs">3.0h</div>
+  </div>
+
+  <div class="month-divider">April 2026 — 15.0h total</div>
+
+  <div class="entry-row">
+    <div class="e-date">01 Apr</div><div class="e-who">CJ</div>
+    <div class="e-desc">MSB videos</div>
+    <div class="e-tier">Cat A</div><div class="e-hrs">1.5h</div>
+  </div>
+  <div class="entry-row">
+    <div class="e-date">08 Apr</div><div class="e-who">CJ</div>
+    <div class="e-desc">MSB training videos</div>
+    <div class="e-tier">Cat A</div><div class="e-hrs">2.0h</div>
+  </div>
+  <div class="entry-row">
+    <div class="e-date">09 Apr</div><div class="e-who">CJ</div>
+    <div class="e-desc">MSB training videos</div>
+    <div class="e-tier">Cat A</div><div class="e-hrs">3.0h</div>
+  </div>
+  <div class="entry-row">
+    <div class="e-date">10 Apr</div><div class="e-who">CJ</div>
+    <div class="e-desc">MSB training videos</div>
+    <div class="e-tier">Cat A</div><div class="e-hrs">2.0h</div>
+  </div>
+  <div class="entry-row">
+    <div class="e-date">22 Apr</div><div class="e-who">CJ</div>
+    <div class="e-desc">MSB Training videos</div>
+    <div class="e-tier">Cat A</div><div class="e-hrs">2.0h</div>
+  </div>
+  <div class="entry-row">
+    <div class="e-date">Apr</div><div class="e-who">CJ</div>
+    <div class="e-desc">MSB training videos (additional session — full description not captured in export)</div>
+    <div class="e-tier">Cat A</div><div class="e-hrs">4.5h</div>
+  </div>
+
+  <br>
+
+  <!-- HIGHLIGHTS -->
+  <h2>Highlights</h2>
+
+  <div class="highlight">
+    <div class="hl-title">RD — A Month-Long Production Marathon</div>
+    <div class="hl-body">RD worked on MSB for 21 days across March, logging 137.5 hours — an average of 6.5 hours per working day on a single client. The engagement moved through three distinct phases: research and cataloguing (5–15 March), video production of operational procedures (16–22 March), then advanced multi-video production at Cat A rates (24–31 March). RD is not visible in April, suggesting the primary production body of work was delivered by end of March.</div>
+  </div>
+
+  <div class="highlight">
+    <div class="hl-title">Tier Shift — Cat B to Cat A on 24 March</div>
+    <div class="hl-body">RD's billing tier shifted from Cat B Creative to Cat A Expert Work on 24 March, aligning with the transition from cataloguing and early editing into delivering fully produced, complex video assets (manifold, TSi 150CC, TUG, safety systems). This is correctly applied — the later-phase work required higher technical production skill and was more commercially valuable output.</div>
+  </div>
+
+  <div class="highlight">
+    <div class="hl-title">CJ — Supporting in March, Leading in April</div>
+    <div class="hl-body">CJ joined from 23 March on training videos (7h across 3 sessions) while RD was still active. By April, CJ holds the engagement alone — 15 hours across 6 sessions, all Cat A. The structure of April (4 entries in 8–10 April, then a 12-day gap, then a final 4.5h session) is consistent with a submit-and-review cycle. CJ is likely handling final revisions and sign-off.</div>
+  </div>
+
+  <div class="highlight">
+    <div class="hl-title">RK — Direction at the Right Moment</div>
+    <div class="hl-body">RK's single 6-hour admin and direction entry on 19 March lands exactly at the pivot point between cataloguing and production. This wasn't random — 19 March was mid-way through the control panel edits and shortly before the tier shift. RK almost certainly provided the creative/commercial direction that set up the Cat A production push in the final week of March.</div>
+  </div>
+
+  <div class="highlight">
+    <div class="hl-title">Volume vs. Client Scope</div>
+    <div class="hl-body">165.5 hours across two months is a significant engagement. The project covers a wide range of training video subjects: control panel, grease points, fluids check, manual override valves, TSi 150CC, TUG, water manifold, mast raising, crew safety, shutdown procedures, and walk-around. This is a comprehensive training library — not a single video.</div>
+  </div>
+
+  <!-- ANALYSIS -->
+  <h2>Analysis</h2>
+
+  <div class="analysis">
+    <p>MSB was the dominant external production engagement for March. At 150.5 hours logged across three team members, it absorbed the majority of Subsurface's creative capacity for the month — with RD essentially working full-time on MSB from the 5th to the 31st. This is a meaningful engagement at scale.</p>
+
+    <p>The project's shape is clear in the data: a structured, phased approach from discovery through to delivery. RD's methodical cataloguing phase (11–15 March, 33 hours) is notable — five consecutive 5–8 hour days watching source footage and building a content map. This kind of upfront structure investment often pays back in production efficiency, and the subsequent pace of the production phase (8-hour editing days, multiple videos completed) suggests it did.</p>
+
+    <p>The Cat B to Cat A billing shift on 24 March is correctly timed. The early work — planning, cataloguing, research-based editing — is genuine Cat B creative labour. The final production phase — technically complex multi-source video construction for a specialist drilling equipment client — warrants Cat A. If there are any invoicing queries on tier, the granular descriptions in the timesheet make a robust case.</p>
+
+    <p>April tells the completion story. RD's exit from the engagement is abrupt — no wind-down sessions, no overlap handover entries visible. CJ's April sessions read like CJ already knew the content well from the March training video work, picking up where she left off without needing significant onboarding. The 8–10 April cluster (7 hours in three days) followed by silence and then a further 4.5h session is a textbook client review-and-revise pattern.</p>
+
+    <p>The outstanding question is whether MSB is now closed or ongoing. If the April entries represent final delivery, this engagement has concluded and should be marked as such. If more work is expected, it's worth agreeing scope and timeline now — CJ's April capacity is being shared with DBR's operational build-out, and a third wave of MSB work would need to be planned against that constraint.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    MSB — March &amp; April 2026 Time Analysis &nbsp;·&nbsp; Source: Subsurface Timesheet v009 &nbsp;·&nbsp; Prepared 30 April 2026
+  </div>
+
+</div>
+</body>
+</html>

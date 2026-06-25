@@ -1,0 +1,1906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sightline — Professional property photography, videography, 3D visuals and floor plans for estate agents, Airbnb and private sellers. Property Seen Clearly.">
+  <title>Sightline | Property Seen Clearly</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       RESET & ROOT
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:        #f0ebe3;
+      --cream-mid:    #e8e2d8;
+      --charcoal:     #1c1c1c;
+      --charcoal-2:   #252525;
+      --charcoal-3:   #2e2e2e;
+      --ink:          #0d0d0d;
+      --gold:         #b89660;
+      --gold-lt:      #d4b37f;
+      --text-cream:   #f0ebe3;
+      --muted-dark:   rgba(240,235,227,0.50);
+      --muted-light:  #7c7670;
+      --serif:        'Cormorant Garamond', Georgia, serif;
+      --sans:         'DM Sans', system-ui, sans-serif;
+      --ease:         cubic-bezier(0.4, 0, 0.2, 1);
+      --t:            0.4s;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--cream);
+      color: var(--charcoal);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img { display: block; max-width: 100%; }
+    a   { text-decoration: none; color: inherit; }
+    button { cursor: pointer; border: none; background: none; font: inherit; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       SCROLL REVEAL
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+    }
+    .reveal.up { opacity: 1; transform: translateY(0); }
+    .reveal.d1 { transition-delay: 0.10s; }
+    .reveal.d2 { transition-delay: 0.20s; }
+    .reveal.d3 { transition-delay: 0.30s; }
+    .reveal.d4 { transition-delay: 0.42s; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       NAVIGATION
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 900;
+      background: var(--cream);
+      border-bottom: 1px solid rgba(28,28,28,0.07);
+      transition: box-shadow var(--t) var(--ease);
+    }
+    .nav.scrolled { box-shadow: 0 4px 32px rgba(0,0,0,0.07); }
+
+    .nav-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 48px;
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .nav-logo-img {
+      height: 38px;
+      width: auto;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-menu a {
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      transition: color var(--t);
+      white-space: nowrap;
+    }
+    .nav-menu a:hover { color: var(--gold); }
+
+    .nav-book {
+      flex-shrink: 0;
+      display: inline-block;
+      padding: 10px 28px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--cream);
+      background: var(--charcoal);
+      border: 1px solid var(--charcoal);
+      transition: background var(--t), color var(--t);
+      white-space: nowrap;
+    }
+    .nav-book:hover {
+      background: transparent;
+      color: var(--charcoal);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 6px;
+      flex-shrink: 0;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--charcoal);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       HERO
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 640px;
+      overflow: hidden;
+    }
+
+    .hero-slides {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.4s var(--ease);
+    }
+    .hero-slide.active { opacity: 1; }
+
+    .hero-veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        105deg,
+        rgba(13,13,13,0.78) 0%,
+        rgba(13,13,13,0.50) 55%,
+        rgba(13,13,13,0.24) 100%
+      );
+      pointer-events: none;
+    }
+
+    .hero-body {
+      position: relative;
+      z-index: 10;
+      height: 100%;
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 48px;
+      padding-top: 76px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold-lt);
+      margin-bottom: 28px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero-h1 {
+      font-family: var(--serif);
+      font-size: clamp(3.4rem, 7.5vw, 7rem);
+      font-weight: 300;
+      line-height: 1.03;
+      color: var(--text-cream);
+      letter-spacing: -0.01em;
+      margin-bottom: 28px;
+      max-width: 760px;
+    }
+    .hero-h1 em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--gold-lt);
+    }
+
+    .hero-sub {
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: rgba(240,235,227,0.68);
+      margin-bottom: 52px;
+      max-width: 480px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 40px;
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: all var(--t) var(--ease);
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--ink);
+    }
+    .btn-gold:hover { background: var(--gold-lt); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-cream);
+      border: 1px solid rgba(240,235,227,0.35);
+    }
+    .btn-ghost:hover {
+      border-color: var(--text-cream);
+      background: rgba(240,235,227,0.07);
+    }
+
+    /* Scroll cue */
+    .hero-scroll-cue {
+      position: absolute;
+      bottom: 44px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      color: rgba(240,235,227,0.38);
+      font-size: 0.58rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+    }
+    .scroll-bar {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, rgba(240,235,227,0.5), transparent);
+      animation: drip 2.3s ease infinite;
+    }
+    @keyframes drip {
+      0%   { transform: scaleY(0); transform-origin: top; opacity: 0; }
+      40%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
+      41%  { transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+    }
+
+    /* Carousel dots */
+    .hero-dots {
+      position: absolute;
+      bottom: 48px;
+      right: 48px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .dot {
+      width: 20px;
+      height: 2px;
+      background: rgba(240,235,227,0.28);
+      cursor: pointer;
+      transition: background var(--t), width var(--t);
+    }
+    .dot.active {
+      width: 40px;
+      background: var(--gold);
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       STATS BAND
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .stats {
+      background: var(--charcoal);
+      padding: 0 48px;
+    }
+    .stats-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      display: flex;
+    }
+    .stat {
+      flex: 1;
+      padding: 48px 0;
+      text-align: center;
+      position: relative;
+    }
+    .stat + .stat::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 50%;
+      transform: translateY(-50%);
+      width: 1px; height: 36px;
+      background: rgba(240,235,227,0.09);
+    }
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 2.8rem;
+      font-weight: 400;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 7px;
+    }
+    .stat-lbl {
+      font-size: 0.66rem;
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted-dark);
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       SECTION BASE
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .sec {
+      padding: 130px 48px;
+    }
+    .sec-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+    }
+    .sec-dark  { background: var(--charcoal); }
+    .sec-ink   { background: var(--ink); }
+    .sec-cream { background: var(--cream); }
+
+    .label {
+      display: block;
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+    .heading {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 4.2vw, 4rem);
+      font-weight: 300;
+      line-height: 1.07;
+      letter-spacing: -0.01em;
+    }
+    .heading em { font-style: italic; }
+    .heading-dark  { color: var(--charcoal); }
+    .heading-light { color: var(--text-cream); }
+
+    .body-copy {
+      font-size: 0.92rem;
+      font-weight: 300;
+      line-height: 1.88;
+    }
+    .body-copy-light { color: var(--muted-light); }
+    .body-copy-dark  { color: var(--muted-dark); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       ABOUT
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: center;
+    }
+
+    .about-images {
+      position: relative;
+      height: 620px;
+    }
+    .about-img-main {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .about-img-accent {
+      position: absolute;
+      bottom: -40px;
+      right: -40px;
+      width: 46%;
+      height: 230px;
+      object-fit: cover;
+      border: 6px solid var(--cream);
+      box-shadow: 0 12px 48px rgba(0,0,0,0.15);
+    }
+
+    .about-rule {
+      width: 44px;
+      height: 1px;
+      background: var(--gold);
+      margin: 36px 0;
+    }
+    .about-features {
+      list-style: none;
+      margin-top: 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .about-features li {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--muted-light);
+    }
+    .about-features li::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       SERVICES
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .services-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: end;
+      margin-bottom: 72px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+
+    .svc-card {
+      position: relative;
+      background: var(--charcoal-2);
+      padding: 58px 50px;
+      overflow: hidden;
+      transition: background var(--t);
+    }
+    .svc-card:hover { background: var(--charcoal-3); }
+
+    .svc-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%; height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.55s var(--ease);
+    }
+    .svc-card:hover::after { transform: scaleX(1); }
+
+    .svc-bg-num {
+      position: absolute;
+      top: 42px; right: 42px;
+      font-family: var(--serif);
+      font-size: 5.5rem;
+      font-weight: 300;
+      color: rgba(240,235,227,0.035);
+      line-height: 1;
+      user-select: none;
+    }
+
+    .svc-icon {
+      width: 46px;
+      height: 46px;
+      color: var(--gold);
+      margin-bottom: 32px;
+    }
+
+    .svc-title {
+      font-family: var(--serif);
+      font-size: 1.7rem;
+      font-weight: 400;
+      color: var(--text-cream);
+      margin-bottom: 16px;
+      letter-spacing: 0.01em;
+    }
+
+    .svc-desc {
+      font-size: 0.875rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--muted-dark);
+      margin-bottom: 32px;
+      max-width: 340px;
+    }
+
+    .svc-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      transition: gap var(--t);
+    }
+    .svc-link:hover { gap: 18px; }
+    .svc-link svg { width: 14px; height: 14px; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       PORTFOLIO
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .portfolio-top {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 48px;
+      gap: 24px;
+    }
+    .portfolio-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      border-bottom: 1px solid rgba(28,28,28,0.3);
+      padding-bottom: 2px;
+      transition: color var(--t), border-color var(--t), gap var(--t);
+      flex-shrink: 0;
+    }
+    .portfolio-link:hover {
+      color: var(--gold);
+      border-color: var(--gold);
+      gap: 16px;
+    }
+    .portfolio-link svg { width: 13px; height: 13px; }
+
+    .port-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 320px 320px;
+      gap: 10px;
+    }
+
+    .port-item {
+      position: relative;
+      overflow: hidden;
+    }
+    .port-item:nth-child(1) {
+      grid-column: 1;
+      grid-row: 1 / 3;
+    }
+
+    .port-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.95s var(--ease);
+    }
+    .port-item:hover img { transform: scale(1.06); }
+
+    .port-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13,13,13,0.76) 0%, transparent 55%);
+      opacity: 0;
+      transition: opacity var(--t);
+      display: flex;
+      align-items: flex-end;
+      padding: 24px;
+    }
+    .port-item:hover .port-overlay { opacity: 1; }
+
+    .port-tag {
+      font-size: 0.63rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-cream);
+      padding: 6px 14px;
+      border: 1px solid rgba(240,235,227,0.28);
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       WHO WE SERVE
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .clients-top {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+    .clients-top .body-copy {
+      max-width: 520px;
+      margin: 20px auto 0;
+    }
+
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .client-card {
+      position: relative;
+      height: 480px;
+      overflow: hidden;
+    }
+
+    .client-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.95s var(--ease);
+      filter: brightness(0.40) saturate(0.8);
+    }
+    .client-card:hover img {
+      transform: scale(1.05);
+      filter: brightness(0.30) saturate(0.75);
+    }
+
+    .client-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 40px;
+      text-align: center;
+    }
+
+    .client-icon {
+      width: 52px;
+      height: 52px;
+      color: var(--gold);
+      margin-bottom: 22px;
+    }
+
+    .client-label {
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--gold-lt);
+      margin-bottom: 12px;
+    }
+
+    .client-title {
+      font-family: var(--serif);
+      font-size: 2.1rem;
+      font-weight: 400;
+      color: var(--text-cream);
+      margin-bottom: 16px;
+    }
+
+    .client-desc {
+      font-size: 0.84rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: rgba(240,235,227,0.62);
+      max-width: 240px;
+    }
+
+    .client-rule {
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+      margin: 22px auto 0;
+      transition: width var(--t);
+    }
+    .client-card:hover .client-rule { width: 56px; }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       PROCESS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .process-top {
+      text-align: center;
+      margin-bottom: 88px;
+    }
+    .process-top .body-copy {
+      max-width: 480px;
+      margin: 20px auto 0;
+    }
+
+    .process-track {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      position: relative;
+    }
+    .process-track::before {
+      content: '';
+      position: absolute;
+      top: 27px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 1px;
+      background: linear-gradient(to right, var(--gold), rgba(184,150,96,0.18));
+    }
+
+    .process-step {
+      padding: 0 28px;
+      text-align: center;
+    }
+
+    .step-ring {
+      width: 56px;
+      height: 56px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 36px;
+      background: var(--cream);
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--gold);
+      position: relative;
+      z-index: 1;
+      transition: background var(--t), color var(--t);
+    }
+    .process-step:hover .step-ring {
+      background: var(--gold);
+      color: var(--cream);
+    }
+
+    .step-title {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 12px;
+    }
+
+    .step-desc {
+      font-size: 0.83rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--muted-light);
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       TESTIMONIALS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .testi-top {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .testi-card {
+      background: rgba(240,235,227,0.03);
+      border: 1px solid rgba(240,235,227,0.07);
+      padding: 56px 52px;
+      transition: border-color var(--t);
+    }
+    .testi-card:hover { border-color: rgba(184,150,96,0.2); }
+
+    .testi-mark {
+      font-family: var(--serif);
+      font-size: 4.5rem;
+      line-height: 0.75;
+      color: var(--gold);
+      opacity: 0.4;
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    .testi-quote {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.82;
+      color: rgba(240,235,227,0.80);
+      margin-bottom: 40px;
+    }
+
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .testi-line {
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+    .testi-name {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted-dark);
+    }
+    .testi-role {
+      font-size: 0.68rem;
+      font-weight: 300;
+      color: rgba(240,235,227,0.28);
+      margin-top: 3px;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       CTA BAND
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .cta-band {
+      background: var(--gold);
+      padding: 104px 48px;
+      text-align: center;
+    }
+    .cta-band-h {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5vw, 4.4rem);
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.06;
+      margin-bottom: 16px;
+    }
+    .cta-band-h em { font-style: italic; }
+    .cta-band-sub {
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: rgba(13,13,13,0.58);
+      margin-bottom: 52px;
+    }
+    .btn-ink {
+      background: var(--ink);
+      color: var(--cream);
+      border: 1px solid var(--ink);
+    }
+    .btn-ink:hover {
+      background: transparent;
+      color: var(--ink);
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       CONTACT
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 96px;
+      align-items: start;
+    }
+
+    .contact-info-block {
+      margin-top: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .contact-row {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+    }
+    .contact-icon {
+      width: 20px;
+      height: 20px;
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .contact-row-label {
+      font-size: 0.60rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted-dark);
+      margin-bottom: 5px;
+    }
+    .contact-row-val {
+      font-family: var(--serif);
+      font-size: 1.08rem;
+      font-weight: 400;
+      color: var(--text-cream);
+    }
+
+    /* Form */
+    .form { display: flex; flex-direction: column; gap: 16px; }
+
+    .form-row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .field { display: flex; flex-direction: column; gap: 8px; }
+    .field label {
+      font-size: 0.60rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted-dark);
+    }
+    .field input,
+    .field select,
+    .field textarea {
+      background: rgba(240,235,227,0.04);
+      border: 1px solid rgba(240,235,227,0.10);
+      color: var(--text-cream);
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 300;
+      padding: 14px 18px;
+      outline: none;
+      width: 100%;
+      transition: border-color var(--t);
+      -webkit-appearance: none;
+      border-radius: 0;
+    }
+    .field input::placeholder,
+    .field textarea::placeholder { color: rgba(240,235,227,0.20); }
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus { border-color: var(--gold); }
+    .field select { cursor: pointer; }
+    .field select option { background: var(--charcoal); }
+    .field textarea { resize: vertical; min-height: 130px; }
+
+    .form-submit {
+      margin-top: 8px;
+      align-self: flex-start;
+      display: inline-block;
+      padding: 15px 48px;
+      background: var(--gold);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background var(--t);
+    }
+    .form-submit:hover { background: var(--gold-lt); }
+    .form-submit:disabled {
+      background: #4a8c6a;
+      color: #fff;
+      cursor: default;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       FOOTER
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .footer {
+      background: var(--ink);
+      padding: 92px 48px 44px;
+      border-top: 1px solid rgba(240,235,227,0.05);
+    }
+    .footer-inner { max-width: 1320px; margin: 0 auto; }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 64px;
+      padding-bottom: 64px;
+      border-bottom: 1px solid rgba(240,235,227,0.05);
+      margin-bottom: 40px;
+    }
+
+    .footer-brand-name {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-weight: 300;
+      letter-spacing: 0.22em;
+      color: var(--text-cream);
+      margin-bottom: 6px;
+    }
+    .footer-brand-tag {
+      font-size: 0.60rem;
+      font-weight: 300;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 22px;
+    }
+    .footer-brand-desc {
+      font-size: 0.82rem;
+      font-weight: 300;
+      line-height: 1.78;
+      color: rgba(240,235,227,0.32);
+      max-width: 230px;
+      margin-bottom: 30px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 10px;
+    }
+    .footer-social a {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(240,235,227,0.09);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(240,235,227,0.35);
+      transition: border-color var(--t), color var(--t);
+    }
+    .footer-social a:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+    .footer-social svg { width: 15px; height: 15px; }
+
+    .footer-col-head {
+      font-size: 0.60rem;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+    }
+    .footer-links a {
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: rgba(240,235,227,0.38);
+      transition: color var(--t);
+    }
+    .footer-links a:hover { color: var(--text-cream); }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .footer-copy {
+      font-size: 0.72rem;
+      font-weight: 300;
+      color: rgba(240,235,227,0.18);
+    }
+    .footer-legal {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-legal a {
+      font-size: 0.72rem;
+      font-weight: 300;
+      color: rgba(240,235,227,0.18);
+      transition: color var(--t);
+    }
+    .footer-legal a:hover { color: rgba(240,235,227,0.48); }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       RESPONSIVE
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    @media (max-width: 1100px) {
+      .about-grid    { grid-template-columns: 1fr; gap: 60px; }
+      .about-images  { height: 440px; }
+      .about-img-accent { display: none; }
+      .services-top  { grid-template-columns: 1fr; gap: 24px; }
+      .contact-grid  { grid-template-columns: 1fr; gap: 60px; }
+      .footer-top    { grid-template-columns: 1fr 1fr; gap: 48px; }
+      .process-track { grid-template-columns: repeat(2, 1fr); gap: 56px; }
+      .process-track::before { display: none; }
+    }
+
+    @media (max-width: 768px) {
+      .sec         { padding: 88px 24px; }
+      .nav-inner   { padding: 0 24px; height: 68px; }
+      .hamburger   { display: flex; }
+      .nav-book    { display: none; }
+      .nav-menu {
+        display: none;
+        position: absolute;
+        top: 68px; left: 0; right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        background: var(--cream);
+        padding: 16px 24px 24px;
+        gap: 0;
+        border-bottom: 1px solid rgba(28,28,28,0.07);
+        box-shadow: 0 8px 28px rgba(0,0,0,0.07);
+      }
+      .nav-menu.open { display: flex; }
+      .nav-menu li { border-bottom: 1px solid rgba(28,28,28,0.05); }
+      .nav-menu li:last-child { border-bottom: none; }
+      .nav-menu a  { display: block; padding: 14px 0; color: var(--charcoal) !important; border: none; }
+      .hero-body   { padding: 0 24px; padding-top: 68px; }
+      .hero-dots   { right: 24px; bottom: 40px; }
+      .stats       { padding: 0 24px; }
+      .stats-inner { flex-direction: column; }
+      .stat + .stat::before { display: none; }
+      .stat { padding: 28px 0; }
+      .services-grid  { grid-template-columns: 1fr; }
+      .port-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+      .port-item { height: 200px; }
+      .port-item:nth-child(1) { grid-column: 1 / -1; grid-row: auto; height: 260px; }
+      .clients-grid { grid-template-columns: 1fr; }
+      .client-card  { height: 340px; }
+      .testi-grid   { grid-template-columns: 1fr; }
+      .footer-top   { grid-template-columns: 1fr; gap: 40px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .footer-legal  { flex-wrap: wrap; justify-content: center; }
+      .process-track { grid-template-columns: 1fr; gap: 48px; }
+      .cta-band { padding: 80px 24px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-h1    { font-size: 2.8rem; }
+      .hero-ctas  { flex-direction: column; }
+      .btn        { text-align: center; width: 100%; }
+      .form-row-2 { grid-template-columns: 1fr; }
+      .svc-card   { padding: 44px 32px; }
+      .testi-card { padding: 40px 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════ -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+
+      <a href="#" aria-label="Sightline — Home">
+        <img src="logo_fixed_4.png" alt="Sightline" class="nav-logo-img">
+      </a>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact" class="nav-book">Book Now</a></li>
+      </ul>
+
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+    </div>
+  </nav>
+
+
+  <!-- ═══════════════════════════════
+       HERO
+  ═══════════════════════════════ -->
+  <section class="hero" aria-label="Hero">
+
+    <div class="hero-slides" id="heroSlides">
+      <div class="hero-slide active" style="background-image:url('Images%20/Eaton_LaneLR.webp')"></div>
+      <div class="hero-slide" style="background-image:url('Images%20/6438.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('Images%20/download%20(1).jpeg')"></div>
+      <div class="hero-slide" style="background-image:url('Images%20/download%20(3).jpeg')"></div>
+    </div>
+
+    <div class="hero-veil"></div>
+
+    <div class="hero-body">
+      <span class="hero-eyebrow">Property Media Studio</span>
+      <h1 class="hero-h1">Property<br><em>Seen Clearly</em></h1>
+      <p class="hero-sub">Premium photography, videography, 3D visuals and floor plans — crafted to make every property unforgettable.</p>
+      <div class="hero-ctas">
+        <a href="#services" class="btn btn-gold">Explore Services</a>
+        <a href="#contact" class="btn btn-ghost">Get a Quote</a>
+      </div>
+    </div>
+
+    <div class="hero-scroll-cue" aria-hidden="true">
+      <div class="scroll-bar"></div>
+      <span>Scroll</span>
+    </div>
+
+    <div class="hero-dots" id="heroDots" aria-hidden="true">
+      <div class="dot active" data-idx="0"></div>
+      <div class="dot" data-idx="1"></div>
+      <div class="dot" data-idx="2"></div>
+      <div class="dot" data-idx="3"></div>
+    </div>
+
+  </section>
+
+
+  <!-- ═══════════════════════════════
+       STATS BAND
+  ═══════════════════════════════ -->
+  <div class="stats" aria-label="Key statistics">
+    <div class="stats-inner">
+
+      <div class="stat reveal">
+        <div class="stat-num">200<span style="font-size:1.5rem">+</span></div>
+        <div class="stat-lbl">Properties Captured</div>
+      </div>
+
+      <div class="stat reveal d1">
+        <div class="stat-num">48<span style="font-size:1.5rem">hr</span></div>
+        <div class="stat-lbl">Turnaround Time</div>
+      </div>
+
+      <div class="stat reveal d2">
+        <div class="stat-num">5<span style="font-size:1.5rem">★</span></div>
+        <div class="stat-lbl">Client Rated</div>
+      </div>
+
+      <div class="stat reveal d3">
+        <div class="stat-num">100<span style="font-size:1.5rem">%</span></div>
+        <div class="stat-lbl">Satisfaction Guaranteed</div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════
+       ABOUT
+  ═══════════════════════════════ -->
+  <section class="sec sec-cream" id="about">
+    <div class="sec-inner">
+      <div class="about-grid">
+
+        <div class="about-images reveal">
+          <img src="Images%20/Eaton_LaneLR.webp" alt="Luxury property interior — 3D visual" class="about-img-main" loading="lazy">
+          <img src="Images%20/shutterstock_2362063783-jpg-2-1.webp" alt="London property exterior" class="about-img-accent" loading="lazy">
+        </div>
+
+        <div>
+          <span class="label reveal">About Sightline</span>
+          <h2 class="heading heading-dark reveal d1">We make<br><em>properties shine.</em></h2>
+          <div class="about-rule reveal d2"></div>
+          <p class="body-copy body-copy-light reveal d2">
+            Sightline is a specialist property media studio dedicated to presenting homes and spaces at their absolute finest. We combine technical precision with a refined creative eye — producing imagery and visuals that move buyers, attract guests and command attention in competitive markets.
+          </p>
+          <p class="body-copy body-copy-light reveal d3" style="margin-top:22px;">
+            From a studio flat to a sprawling country estate, every property deserves to be seen clearly. That is our promise.
+          </p>
+          <ul class="about-features reveal d4">
+            <li>HDR photography with professional post-production</li>
+            <li>Cinematic 4K property videography &amp; drone aerials</li>
+            <li>Photorealistic 3D CGI renders &amp; virtual walkthroughs</li>
+            <li>Accurate measured 2D &amp; 3D floor plans</li>
+            <li>48-hour delivery as standard, nationwide coverage</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════
+       SERVICES
+  ═══════════════════════════════ -->
+  <section class="sec sec-dark" id="services">
+    <div class="sec-inner">
+
+      <div class="services-top">
+        <div>
+          <span class="label reveal">What We Offer</span>
+          <h2 class="heading heading-light reveal d1">Our <em>Services</em></h2>
+        </div>
+        <p class="body-copy body-copy-dark reveal d2" style="max-width:420px;">
+          Every service is delivered with uncompromising attention to detail — from capture to final edit, we handle everything so you receive a polished result, every time.
+        </p>
+      </div>
+
+      <div class="services-grid">
+
+        <!-- Photography -->
+        <div class="svc-card reveal">
+          <span class="svc-bg-num">01</span>
+          <svg class="svc-icon" viewBox="0 0 46 46" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="4" y="13" width="38" height="27" rx="2"/>
+            <circle cx="23" cy="26.5" r="7.5"/>
+            <circle cx="23" cy="26.5" r="4"/>
+            <path d="M15 13l3-6h10l3 6"/>
+            <circle cx="35" cy="19" r="1.5" fill="currentColor" stroke="none"/>
+          </svg>
+          <h3 class="svc-title">Photography</h3>
+          <p class="svc-desc">Professional HDR photography that captures light, space and character. Every shot is expertly composed and colour-graded to present your property in its finest form.</p>
+          <a href="#contact" class="svc-link">
+            Book a shoot
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
+
+        <!-- Videography -->
+        <div class="svc-card reveal d1">
+          <span class="svc-bg-num">02</span>
+          <svg class="svc-icon" viewBox="0 0 46 46" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="4" y="13" width="26" height="20" rx="2"/>
+            <path d="M30 18l12-6v22l-12-6V18z"/>
+            <line x1="10" y1="19" x2="10" y2="27"/>
+            <line x1="18" y1="19" x2="18" y2="27"/>
+          </svg>
+          <h3 class="svc-title">Videography</h3>
+          <p class="svc-desc">Cinematic 4K property films that bring spaces to life. Drone aerials, interior walkthroughs and lifestyle footage — edited to a polished, broadcast-ready finish.</p>
+          <a href="#contact" class="svc-link">
+            Commission a film
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
+
+        <!-- 3D Visuals -->
+        <div class="svc-card reveal d2">
+          <span class="svc-bg-num">03</span>
+          <svg class="svc-icon" viewBox="0 0 46 46" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M23 4l18 10.5v17L23 42 5 31.5V14.5z"/>
+            <path d="M23 4v38M5 14.5l18 10.5 18-10.5"/>
+            <line x1="23" y1="25" x2="41" y2="14.5"/>
+          </svg>
+          <h3 class="svc-title">3D Visuals</h3>
+          <p class="svc-desc">Photorealistic CGI renders and virtual walkthroughs that let buyers experience a property before it exists. Ideal for off-plan sales and premium development marketing.</p>
+          <a href="#contact" class="svc-link">
+            Request a render
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
+
+        <!-- Floor Plans -->
+        <div class="svc-card reveal d3">
+          <span class="svc-bg-num">04</span>
+          <svg class="svc-icon" viewBox="0 0 46 46" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="5" y="5" width="36" height="36" rx="1"/>
+            <path d="M5 21h14v20M19 5v16M30 5v14h11"/>
+            <line x1="5" y1="31" x2="19" y2="31"/>
+            <line x1="19" y1="31" x2="30" y2="31"/>
+            <line x1="30" y1="19" x2="30" y2="41"/>
+          </svg>
+          <h3 class="svc-title">Floor Plans</h3>
+          <p class="svc-desc">Precise, professionally drawn floor plans that give buyers clarity on layout and dimensions. Available in 2D, 3D and furnished formats — essential for every listing.</p>
+          <a href="#contact" class="svc-link">
+            Get floor plans
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════
+       PORTFOLIO
+  ═══════════════════════════════ -->
+  <section class="sec sec-cream" id="portfolio">
+    <div class="sec-inner">
+
+      <div class="portfolio-top">
+        <div>
+          <span class="label reveal">Our Work</span>
+          <h2 class="heading heading-dark reveal d1">Recent <em>Projects</em></h2>
+        </div>
+        <a href="#contact" class="portfolio-link reveal">
+          Work with us
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+        </a>
+      </div>
+
+      <div class="port-grid reveal">
+
+        <div class="port-item">
+          <img src="Images%20/download%20(1).jpeg" alt="Georgian property exterior, London" loading="lazy">
+          <div class="port-overlay"><span class="port-tag">Exterior Photography</span></div>
+        </div>
+
+        <div class="port-item">
+          <img src="Images%20/Eaton_LaneLR.webp" alt="Luxury living room — 3D visual" loading="lazy">
+          <div class="port-overlay"><span class="port-tag">3D Visual</span></div>
+        </div>
+
+        <div class="port-item">
+          <img src="Images%20/6438.jpg" alt="Luxury study with London terrace view" loading="lazy">
+          <div class="port-overlay"><span class="port-tag">Interior Photography</span></div>
+        </div>
+
+        <div class="port-item">
+          <img src="Images%20/download%20(2).jpeg" alt="Contemporary living room" loading="lazy">
+          <div class="port-overlay"><span class="port-tag">Interior Photography</span></div>
+        </div>
+
+        <div class="port-item">
+          <img src="Images%20/download%20(3).jpeg" alt="Interior with Crittall steel doors" loading="lazy">
+          <div class="port-overlay"><span class="port-tag">Interior Photography</span></div>
+        </div>
+
+        <div class="port-item">
+          <img src="Images%20/download%20(4).jpeg" alt="Bright minimal living room" loading="lazy">
+          <div class="port-overlay"><span class="port-tag">Interior Photography</span></div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════
+       WHO WE SERVE
+  ═══════════════════════════════ -->
+  <section class="sec sec-dark">
+    <div class="sec-inner">
+
+      <div class="clients-top">
+        <span class="label reveal">Who We Work With</span>
+        <h2 class="heading heading-light reveal d1">Built for every<br><em>property professional</em></h2>
+        <p class="body-copy body-copy-dark reveal d2">
+          Whether you're selling, letting or hosting — we have the expertise and the toolkit to elevate your property's presentation and accelerate results.
+        </p>
+      </div>
+
+      <div class="clients-grid">
+
+        <div class="client-card reveal">
+          <img src="Images%20/download.jpeg" alt="London period terraced houses for estate agents" loading="lazy">
+          <div class="client-content">
+            <svg class="client-icon" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="8" y="20" width="36" height="28"/>
+              <path d="M2 22L26 4l24 18"/>
+              <rect x="19" y="32" width="8" height="16" rx="0.5"/>
+              <rect x="31" y="24" width="9" height="8" rx="0.5"/>
+              <rect x="12" y="24" width="9" height="8" rx="0.5"/>
+            </svg>
+            <span class="client-label">For Estate Agents</span>
+            <h3 class="client-title">Estate Agents</h3>
+            <p class="client-desc">Sell properties faster and for more. Professional media that sets your listings apart on Rightmove and beyond.</p>
+            <div class="client-rule"></div>
+          </div>
+        </div>
+
+        <div class="client-card reveal d1">
+          <img src="Images%20/download%20(4).jpeg" alt="Bright Airbnb short-let interior" loading="lazy">
+          <div class="client-content">
+            <svg class="client-icon" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M26 4L7 22v24h13V33h12v13h13V22z"/>
+              <rect x="19" y="33" width="14" height="13" rx="0"/>
+            </svg>
+            <span class="client-label">For Hosts</span>
+            <h3 class="client-title">Airbnb Hosts</h3>
+            <p class="client-desc">Attract more guests and command higher nightly rates with photography that makes your listing impossible to scroll past.</p>
+            <div class="client-rule"></div>
+          </div>
+        </div>
+
+        <div class="client-card reveal d2">
+          <img src="Images%20/6438.jpg" alt="Luxury private property interior" loading="lazy">
+          <div class="client-content">
+            <svg class="client-icon" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="21" cy="20" r="12"/>
+              <path d="M29 28l14 14"/>
+              <path d="M33 36l8 2-2-8"/>
+            </svg>
+            <span class="client-label">For Private Sellers</span>
+            <h3 class="client-title">Private Property</h3>
+            <p class="client-desc">Your home is unique. We give it the bespoke presentation it deserves — making the right buyers take notice from the very first image.</p>
+            <div class="client-rule"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════
+       PROCESS
+  ═══════════════════════════════ -->
+  <section class="sec sec-cream">
+    <div class="sec-inner">
+
+      <div class="process-top">
+        <span class="label reveal">How It Works</span>
+        <h2 class="heading heading-dark reveal d1">Simple. <em>Seamless.</em> Delivered.</h2>
+        <p class="body-copy body-copy-light reveal d2">From your first enquiry to final delivery, we make the whole process effortless.</p>
+      </div>
+
+      <div class="process-track">
+
+        <div class="process-step reveal">
+          <div class="step-ring">01</div>
+          <h4 class="step-title">Book Online</h4>
+          <p class="step-desc">Tell us about your property, choose your services and select a date that works — all in just a few minutes.</p>
+        </div>
+
+        <div class="process-step reveal d1">
+          <div class="step-ring">02</div>
+          <h4 class="step-title">We Arrive &amp; Shoot</h4>
+          <p class="step-desc">Our team arrives on time, fully equipped. We handle every angle and every detail — you can relax.</p>
+        </div>
+
+        <div class="process-step reveal d2">
+          <div class="step-ring">03</div>
+          <h4 class="step-title">Expert Post-Production</h4>
+          <p class="step-desc">Every image and video is professionally edited, colour-graded and polished to perfection in our studio.</p>
+        </div>
+
+        <div class="process-step reveal d3">
+          <div class="step-ring">04</div>
+          <h4 class="step-title">Delivered to You</h4>
+          <p class="step-desc">Your finished assets arrive via a private online gallery within 48 hours — ready to use straight away.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════
+       TESTIMONIALS
+  ═══════════════════════════════ -->
+  <section class="sec sec-ink">
+    <div class="sec-inner">
+
+      <div class="testi-top">
+        <span class="label reveal">Client Testimonials</span>
+        <h2 class="heading heading-light reveal d1">What our clients <em>say</em></h2>
+      </div>
+
+      <div class="testi-grid">
+
+        <div class="testi-card reveal">
+          <span class="testi-mark">&ldquo;</span>
+          <p class="testi-quote">The photography Sightline produced was simply stunning. The images went live on a Friday and we had three viewings booked by Monday morning. Exceptional quality and a genuine pleasure to work with.</p>
+          <div class="testi-author">
+            <div class="testi-line"></div>
+            <div>
+              <div class="testi-name">James Hartley</div>
+              <div class="testi-role">Senior Negotiator, Harrington &amp; Co.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card reveal d1">
+          <span class="testi-mark">&ldquo;</span>
+          <p class="testi-quote">Since using Sightline for my Airbnb listing, my booking rate has increased by over 40%. The photos make the apartment look magazine-worthy. Worth every penny — I would not use anyone else.</p>
+          <div class="testi-author">
+            <div class="testi-line"></div>
+            <div>
+              <div class="testi-name">Priya Mehta</div>
+              <div class="testi-role">Airbnb Superhost, South Kensington</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════
+       CTA BAND
+  ═══════════════════════════════ -->
+  <div class="cta-band">
+    <h2 class="cta-band-h reveal">Ready to showcase<br><em>your property?</em></h2>
+    <p class="cta-band-sub reveal d1">Get in touch today — let's make your property seen clearly.</p>
+    <a href="#contact" class="btn btn-ink reveal d2">Book a Shoot</a>
+  </div>
+
+
+  <!-- ═══════════════════════════════
+       CONTACT
+  ═══════════════════════════════ -->
+  <section class="sec sec-dark" id="contact">
+    <div class="sec-inner">
+      <div class="contact-grid">
+
+        <div>
+          <span class="label reveal">Get In Touch</span>
+          <h2 class="heading heading-light reveal d1">Let's work <em>together</em></h2>
+          <p class="body-copy body-copy-dark reveal d2" style="margin-top:22px; max-width:360px;">
+            Have a property to photograph, a listing to elevate or simply want to find out more? We would love to hear from you.
+          </p>
+
+          <div class="contact-info-block">
+
+            <div class="contact-row reveal">
+              <svg class="contact-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="4" width="16" height="12" rx="1"/>
+                <path d="M2 4l8 8 8-8"/>
+              </svg>
+              <div>
+                <div class="contact-row-label">Email</div>
+                <div class="contact-row-val">hello@sightline.co.uk</div>
+              </div>
+            </div>
+
+            <div class="contact-row reveal d1">
+              <svg class="contact-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 2h4l2 4-2.5 1.5c1 2 2.5 3.5 4 4.5L13 9.5l4 2V15a2 2 0 01-2 2C6.716 17 3 13.284 3 6A2 2 0 014 4V2z"/>
+              </svg>
+              <div>
+                <div class="contact-row-label">Phone</div>
+                <div class="contact-row-val">+44 (0)20 0000 0000</div>
+              </div>
+            </div>
+
+            <div class="contact-row reveal d2">
+              <svg class="contact-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M10 2C6.686 2 4 4.686 4 8c0 5 6 10 6 10s6-5 6-10c0-3.314-2.686-6-6-6z"/>
+                <circle cx="10" cy="8" r="2"/>
+              </svg>
+              <div>
+                <div class="contact-row-label">Coverage Area</div>
+                <div class="contact-row-val">London &amp; South East</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <form class="form reveal d1" id="contactForm" novalidate>
+
+          <div class="form-row-2">
+            <div class="field">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" name="fname" placeholder="Jane" required>
+            </div>
+            <div class="field">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" name="lname" placeholder="Smith" required>
+            </div>
+          </div>
+
+          <div class="form-row-2">
+            <div class="field">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+            </div>
+            <div class="field">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="+44 7700 000000">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="service">Service Required</label>
+            <select id="service" name="service">
+              <option value="" disabled selected>Select a service&hellip;</option>
+              <option>Photography</option>
+              <option>Videography</option>
+              <option>3D Visuals</option>
+              <option>Floor Plans</option>
+              <option>Full Package</option>
+              <option>Not sure — please advise</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="proptype">Property Type</label>
+            <select id="proptype" name="proptype">
+              <option value="" disabled selected>Select property type&hellip;</option>
+              <option>Residential — For Sale</option>
+              <option>Residential — For Let</option>
+              <option>Airbnb / Short-Let</option>
+              <option>New Development</option>
+              <option>Commercial</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" placeholder="Tell us about your property and any specific requirements…"></textarea>
+          </div>
+
+          <button type="submit" class="form-submit" id="formSubmit">Send Enquiry</button>
+
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════
+       FOOTER
+  ═══════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+
+      <div class="footer-top">
+
+        <div>
+          <div class="footer-brand-name">SIGHTLINE</div>
+          <div class="footer-brand-tag">Property Seen Clearly</div>
+          <p class="footer-brand-desc">Premium property media for estate agents, Airbnb hosts and private sellers across London and the South East.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5"/>
+                <circle cx="12" cy="12" r="5"/>
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="2"/>
+                <line x1="8" y1="11" x2="8" y2="16"/>
+                <line x1="8" y1="8" x2="8" y2="8.1"/>
+                <path d="M12 11v5M12 11a3 3 0 016 0v5"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-col-head">Services</div>
+          <ul class="footer-links">
+            <li><a href="#services">Photography</a></li>
+            <li><a href="#services">Videography</a></li>
+            <li><a href="#services">3D Visuals</a></li>
+            <li><a href="#services">Floor Plans</a></li>
+            <li><a href="#services">Full Packages</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-head">Company</div>
+          <ul class="footer-links">
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Book a Shoot</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-head">Contact</div>
+          <ul class="footer-links">
+            <li><span style="color:rgba(240,235,227,0.38);font-size:0.82rem;font-weight:300">hello@sightline.co.uk</span></li>
+            <li><span style="color:rgba(240,235,227,0.38);font-size:0.82rem;font-weight:300">+44 (0)20 0000 0000</span></li>
+            <li><span style="color:rgba(240,235,227,0.38);font-size:0.82rem;font-weight:300">London &amp; South East</span></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2025 Sightline Property Media Ltd. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <script>
+    /* ── Hero Carousel ────────────────── */
+    const slides  = document.querySelectorAll('.hero-slide');
+    const dots    = document.querySelectorAll('.dot');
+    let current   = 0;
+    let interval;
+
+    function goTo(idx) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = (idx + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+
+    function startCarousel() {
+      clearInterval(interval);
+      interval = setInterval(() => goTo(current + 1), 5600);
+    }
+
+    dots.forEach(d => {
+      d.addEventListener('click', () => { goTo(+d.dataset.idx); startCarousel(); });
+    });
+
+    startCarousel();
+
+    /* ── Nav shadow on scroll ─────────── */
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 48);
+    }, { passive: true });
+
+    /* ── Mobile hamburger ─────────────── */
+    const burger  = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+
+    burger.addEventListener('click', () => {
+      const isOpen = burger.classList.toggle('open');
+      navMenu.classList.toggle('open', isOpen);
+      burger.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    navMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        burger.classList.remove('open');
+        navMenu.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    /* ── Scroll reveal ────────────────── */
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('up');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.10, rootMargin: '0px 0px -36px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    /* ── Smooth anchor links ──────────── */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href');
+        if (id === '#') return;
+        const target = document.querySelector(id);
+        if (!target) return;
+        e.preventDefault();
+        const offset = nav.offsetHeight + 8;
+        window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
+      });
+    });
+
+    /* ── Contact form ─────────────────── */
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('formSubmit');
+      btn.textContent = 'Message Sent ✓';
+      btn.disabled = true;
+    });
+  </script>
+
+</body>
+</html>

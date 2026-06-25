@@ -1,0 +1,109 @@
+/* ─── Keyframes ──────────────────────────────────────────── */
+
+@keyframes heatRise {
+  0%, 100% { background-position: 50% 100%; }
+  50%       { background-position: 50% 60%; }
+}
+
+@keyframes float-up {
+  0%   { transform: translateY(0) scale(1); opacity: 0.6; }
+  100% { transform: translateY(-100vh) scale(0.4); opacity: 0; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(230, 126, 34, 0.4); }
+  50%       { box-shadow: 0 0 0 12px rgba(230, 126, 34, 0); }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%       { transform: scale(1.8); opacity: 0.5; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes draw-line {
+  from { stroke-dashoffset: 1000; }
+  to   { stroke-dashoffset: 0; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ─── Scroll Reveal Classes ──────────────────────────────── */
+
+.reveal-up,
+.reveal-left,
+.reveal-right,
+.reveal-scale {
+  opacity: 0;
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+  will-change: opacity, transform;
+}
+
+.reveal-up    { transform: translateY(40px); }
+.reveal-left  { transform: translateX(-40px); }
+.reveal-right { transform: translateX(40px); }
+.reveal-scale { transform: scale(0.93); }
+
+.reveal-up.is-visible,
+.reveal-left.is-visible,
+.reveal-right.is-visible,
+.reveal-scale.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Stagger children */
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+.stagger-children.is-visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0ms; }
+.stagger-children.is-visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 100ms; }
+.stagger-children.is-visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 200ms; }
+.stagger-children.is-visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 300ms; }
+.stagger-children.is-visible > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 400ms; }
+.stagger-children.is-visible > *:nth-child(6) { opacity: 1; transform: none; transition-delay: 500ms; }
+.stagger-children.is-visible > *:nth-child(7) { opacity: 1; transform: none; transition-delay: 600ms; }
+
+/* ─── Reduced Motion ─────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal-up,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale {
+    opacity: 1;
+    transform: none;
+  }
+
+  .stagger-children > * {
+    opacity: 1;
+    transform: none;
+  }
+}

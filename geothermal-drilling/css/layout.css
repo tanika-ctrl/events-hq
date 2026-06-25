@@ -1,0 +1,102 @@
+/* ─── Container ──────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: clamp(var(--space-6), 5vw, var(--space-16));
+}
+
+.container--wide {
+  max-width: var(--container-wide);
+}
+
+/* ─── Section Base ───────────────────────────────────────── */
+.section {
+  padding-block: var(--section-padding);
+  position: relative;
+  overflow: hidden;
+}
+
+.section--dark  { background-color: var(--color-obsidian); }
+.section--slate { background-color: var(--color-slate); }
+.section--abyss { background-color: var(--color-abyss); }
+
+/* ─── Grid Systems ───────────────────────────────────────── */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.grid-2-asymmetric {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: var(--space-16);
+  align-items: start;
+}
+
+/* ─── Flex Utilities ─────────────────────────────────────── */
+.flex { display: flex; }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+.flex-col { display: flex; flex-direction: column; }
+.gap-2 { gap: var(--space-2); }
+.gap-4 { gap: var(--space-4); }
+.gap-6 { gap: var(--space-6); }
+.gap-8 { gap: var(--space-8); }
+
+/* ─── Spacing Utilities ──────────────────────────────────── */
+.mt-4  { margin-top: var(--space-4); }
+.mt-6  { margin-top: var(--space-6); }
+.mt-8  { margin-top: var(--space-8); }
+.mt-12 { margin-top: var(--space-12); }
+.mb-4  { margin-bottom: var(--space-4); }
+.mb-6  { margin-bottom: var(--space-6); }
+.mb-8  { margin-bottom: var(--space-8); }
+.mb-12 { margin-bottom: var(--space-12); }
+
+/* ─── Text Alignment ─────────────────────────────────────── */
+.text-center { text-align: center; }
+.text-left   { text-align: left; }
+
+/* ─── Divider ────────────────────────────────────────────── */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-basalt), transparent);
+  border: none;
+  margin-block: var(--space-12);
+}
+
+/* ─── Stats Row ──────────────────────────────────────────── */
+.stats-row {
+  display: flex;
+  gap: var(--space-8);
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.stat-value {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  color: var(--color-steam);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: var(--text-sm);
+  color: var(--color-limestone);
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+}
