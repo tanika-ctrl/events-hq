@@ -1,8 +1,8 @@
 :root {
-  --night-bordeaux: #540B0E;
-  --brown-red: #9E2A2B;
-  --slate: #335C67;
-  --ivory: #F3EDE6;
+  --charcoal: #111315;
+  --charcoal-soft: #1a1c1f;
+  --white: #FFFFFF;
+  --warm-grey: #C9C9C9;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -11,26 +11,23 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: 'Inter', sans-serif;
-  background: var(--night-bordeaux);
-  color: var(--ivory);
+  background: var(--charcoal);
+  color: var(--warm-grey);
   overflow-x: hidden;
 }
 
-/* ---------- Scroll to contact ---------- */
+/* ---------- Scroll cue ---------- */
 .scroll-contact {
   position: fixed;
-  left: 28px;
-  top: 50%;
-  transform: translateY(-50%);
+  left: 32px;
+  bottom: 32px;
   z-index: 50;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 10px;
   text-decoration: none;
-  color: rgba(243, 237, 230, 0.65);
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
+  color: rgba(201, 201, 201, 0.7);
   letter-spacing: 0.22em;
   font-size: 0.7rem;
   text-transform: uppercase;
@@ -39,18 +36,18 @@ body {
 
 .scroll-contact__line {
   width: 1px;
-  height: 56px;
+  height: 32px;
   background: currentColor;
   opacity: 0.5;
   transition: height 0.3s ease, opacity 0.3s ease;
 }
 
 .scroll-contact:hover {
-  color: var(--ivory);
+  color: var(--white);
 }
 
 .scroll-contact:hover .scroll-contact__line {
-  height: 70px;
+  height: 44px;
   opacity: 0.9;
 }
 
@@ -63,28 +60,7 @@ body {
   justify-content: center;
   padding: 6vw;
   overflow: hidden;
-}
-
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
-.hero-bg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: saturate(0.85) brightness(0.65);
-}
-
-.hero-bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 50% 0%, rgba(51, 92, 103, 0.45) 0%, transparent 55%),
-    linear-gradient(160deg, rgba(84, 11, 14, 0.92) 0%, rgba(44, 7, 9, 0.88) 55%, rgba(51, 92, 103, 0.85) 130%);
+  background: linear-gradient(160deg, var(--charcoal) 0%, var(--charcoal-soft) 55%, var(--charcoal) 130%);
 }
 
 .screen {
@@ -100,48 +76,66 @@ body {
   text-align: center;
   padding: 5vw;
   border-radius: 8px;
-  background: linear-gradient(135deg, rgba(158, 42, 43, 0.2), rgba(51, 92, 103, 0.22)), rgba(31, 5, 6, 0.55);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(243, 237, 230, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   box-shadow:
     0 50px 140px -30px rgba(0, 0, 0, 0.75),
     inset 0 0 0 1px rgba(255, 255, 255, 0.04);
   overflow: hidden;
 }
 
-.screen::before {
+.screen__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--charcoal);
+}
+
+.screen__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.screen__bg::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 50% 0%, rgba(243, 237, 230, 0.08) 0%, transparent 60%);
-  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.06) 0%, transparent 60%),
+    linear-gradient(160deg, rgba(17, 19, 21, 0.78) 0%, rgba(17, 19, 21, 0.55) 50%, rgba(17, 19, 21, 0.78) 130%);
 }
 
 .screen__logo {
   position: relative;
+  z-index: 1;
   width: clamp(220px, 32vw, 480px);
   height: auto;
+  filter: drop-shadow(0 4px 24px rgba(0, 0, 0, 0.55));
 }
 
 .screen__tagline {
   position: relative;
+  z-index: 1;
   font-family: 'Archivo', sans-serif;
   font-weight: 600;
   font-size: clamp(1.05rem, 2.1vw, 1.5rem);
   letter-spacing: 0.01em;
-  color: var(--ivory);
+  color: var(--white);
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
 }
 
 .screen__services {
   position: relative;
+  z-index: 1;
   font-size: clamp(0.7rem, 1vw, 0.85rem);
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: rgba(243, 237, 230, 0.6);
+  color: rgba(201, 201, 201, 0.85);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
 }
 
 .screen__services span {
-  color: var(--brown-red);
+  color: var(--white);
   margin: 0 0.4em;
 }
 
@@ -155,14 +149,14 @@ body {
   text-align: center;
   gap: 1.4rem;
   padding: 8vw 6vw;
-  background: linear-gradient(200deg, var(--slate) 0%, var(--night-bordeaux) 65%);
+  background: linear-gradient(200deg, var(--charcoal-soft) 0%, var(--charcoal) 65%);
 }
 
 .eyebrow {
   font-size: 0.75rem;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: rgba(243, 237, 230, 0.6);
+  color: rgba(201, 201, 201, 0.7);
 }
 
 .contact h2 {
@@ -170,11 +164,12 @@ body {
   font-weight: 700;
   font-size: clamp(1.8rem, 4.5vw, 3.2rem);
   line-height: 1.2;
+  color: var(--warm-grey);
 }
 
 .contact h2 em {
   font-style: normal;
-  color: var(--brown-red);
+  color: var(--white);
 }
 
 .contact-links {
@@ -185,7 +180,7 @@ body {
 }
 
 .contact-links a {
-  color: var(--ivory);
+  color: var(--white);
   text-decoration: none;
   font-size: clamp(1rem, 1.6vw, 1.25rem);
   font-weight: 500;
@@ -194,19 +189,18 @@ body {
 }
 
 .contact-links a:hover {
-  border-color: var(--brown-red);
-  color: var(--brown-red);
+  border-color: var(--warm-grey);
+  color: var(--warm-grey);
 }
 
 .footer-copy {
   margin-top: 3rem;
   font-size: 0.75rem;
   letter-spacing: 0.05em;
-  color: rgba(243, 237, 230, 0.45);
+  color: rgba(201, 201, 201, 0.45);
 }
 
 @media (max-width: 700px) {
-  .scroll-contact { left: 14px; font-size: 0.62rem; }
-  .scroll-contact__line { height: 40px; }
+  .scroll-contact { left: 18px; bottom: 18px; font-size: 0.62rem; }
   .screen { aspect-ratio: auto; min-height: 70vh; padding: 12vw 8vw; }
 }
