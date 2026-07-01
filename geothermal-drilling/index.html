@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Geothermal Drilling — Educational Resource</title>
+  <meta name="description" content="Explore the science and technology behind geothermal drilling. Learn how humanity taps into Earth's heat to generate clean, renewable energy." />
+
+  <!-- Preconnect for fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/typography.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/sections.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- NAVIGATION                                              -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <nav class="nav" id="main-nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="#hero" class="nav__logo" aria-label="Home">
+        <span class="nav__logo-text">&lt;GEOTHERMAL /&gt;</span>
+      </a>
+
+      <ul class="nav__links" role="list">
+        <li><a href="#what-is" class="nav__link">What Is It</a></li>
+        <li><a href="#how-drilling-works" class="nav__link">How It Works</a></li>
+        <li><a href="#systems" class="nav__link">Systems</a></li>
+        <li><a href="#technology" class="nav__link">Technology</a></li>
+        <li><a href="#impact" class="nav__link">Impact</a></li>
+        <li><a href="#global" class="nav__link">Global</a></li>
+        <li><a href="#future" class="nav__link">Future</a></li>
+      </ul>
+
+      <button class="nav__hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav Overlay -->
+  <div class="nav__mobile-overlay" id="nav-mobile-overlay" aria-hidden="true">
+    <button class="nav__mobile-close" id="nav-mobile-close" aria-label="Close menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <ul class="nav__mobile-links" role="list">
+      <li><a href="#what-is">What Is It</a></li>
+      <li><a href="#how-drilling-works">How It Works</a></li>
+      <li><a href="#systems">Systems</a></li>
+      <li><a href="#technology">Technology</a></li>
+      <li><a href="#impact">Impact</a></li>
+      <li><a href="#global">Global</a></li>
+      <li><a href="#future">Future</a></li>
+    </ul>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- HERO                                                    -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="hero" class="hero" aria-label="Hero">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__particles" id="hero-particles" aria-hidden="true"></div>
+
+    <div class="container hero__content">
+      <div class="hero__badge reveal-up">
+        <span class="label-badge">Educational Resource</span>
+      </div>
+
+      <h1 class="hero__heading">
+        <span class="hero__word" style="animation-delay: 0.1s">Drilling</span>
+        <span class="hero__word" style="animation-delay: 0.2s">Into</span>
+        <span class="hero__word" style="animation-delay: 0.3s">The</span>
+        <br />
+        <span class="hero__word gradient-text" style="animation-delay: 0.4s">Earth's</span>
+        <span class="hero__word" style="animation-delay: 0.5s"> Heat</span>
+      </h1>
+
+      <p class="hero__subtitle reveal-up" style="animation-delay: 0.6s">
+        Geothermal energy harnesses temperatures reaching 300°C just kilometers beneath our feet. This is the science and technology behind how we extract it.
+      </p>
+
+      <div class="hero__actions reveal-up" style="animation-delay: 0.75s">
+        <a href="#how-drilling-works" class="btn btn--primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/>
+          </svg>
+          Explore the Depth
+        </a>
+        <a href="#global" class="btn btn--ghost">View Global Map</a>
+      </div>
+
+      <div class="hero__stats reveal-up" style="animation-delay: 0.9s">
+        <div class="hero__stat">
+          <span class="hero__stat-value"><span class="stat-number" data-target="12000" data-suffix="m" data-duration="2000">0</span></span>
+          <span class="hero__stat-label">Deepest geothermal drill</span>
+        </div>
+        <div class="hero__stat-divider" aria-hidden="true"></div>
+        <div class="hero__stat">
+          <span class="hero__stat-value"><span class="stat-number" data-target="300" data-suffix="°C" data-duration="1500">0</span></span>
+          <span class="hero__stat-label">Temperature at 5km depth</span>
+        </div>
+        <div class="hero__stat-divider" aria-hidden="true"></div>
+        <div class="hero__stat">
+          <span class="hero__stat-value"><span class="stat-number" data-target="16" data-suffix=" GW" data-duration="1200">0</span></span>
+          <span class="hero__stat-label">Global installed capacity</span>
+        </div>
+        <div class="hero__stat-divider" aria-hidden="true"></div>
+        <div class="hero__stat">
+          <span class="hero__stat-value"><span class="stat-number" data-target="44" data-suffix="%" data-duration="1400">0</span></span>
+          <span class="hero__stat-label">Iceland's energy from geothermal</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator" aria-hidden="true">
+      <span class="scroll-indicator__text">Scroll</span>
+      <div class="scroll-indicator__line"></div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- SECTION 1: WHAT IS GEOTHERMAL                          -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="what-is" class="section section--slate" aria-labelledby="what-is-heading">
+    <div class="container">
+      <div class="grid-2">
+        <div class="what-is__text">
+          <div class="section__label reveal-up">
+            <span class="label-badge">01 / Foundation</span>
+          </div>
+          <h2 id="what-is-heading" class="section__heading reveal-up">
+            What Is <span class="gradient-text">Geothermal</span> Energy?
+          </h2>
+          <p class="lead reveal-up">
+            The word "geothermal" comes from the Greek <em>geo</em> (Earth) and <em>therme</em> (heat). Earth's interior reaches temperatures exceeding 5,000°C at its core — comparable to the surface of the Sun.
+          </p>
+          <div class="what-is__sources stagger-children">
+            <div class="what-is__source-item">
+              <div class="what-is__source-icon">🌍</div>
+              <div>
+                <h4>Formation Heat</h4>
+                <p>Residual heat from Earth's violent formation 4.5 billion years ago, slowly radiating outward from the core.</p>
+              </div>
+            </div>
+            <div class="what-is__source-item">
+              <div class="what-is__source-icon">⚛️</div>
+              <div>
+                <h4>Radioactive Decay</h4>
+                <p>Ongoing heat from the decay of isotopes — uranium-235, thorium-232, and potassium-40 — deep in the mantle and crust.</p>
+              </div>
+            </div>
+            <div class="what-is__source-item">
+              <div class="what-is__source-icon">🏔️</div>
+              <div>
+                <h4>Plate Tectonics</h4>
+                <p>Heat transferred via the movement of tectonic plates, concentrating in volcanic zones and rift valleys.</p>
+              </div>
+            </div>
+          </div>
+          <div class="what-is__gradient-box reveal-up">
+            <div class="what-is__gradient-stat">
+              <span class="gradient-text" style="font-size: var(--text-3xl); font-weight:700;">25–30°C</span>
+              <span style="font-size: var(--text-sm); color: var(--color-limestone);">increase per kilometer in normal crust</span>
+            </div>
+            <div class="what-is__gradient-stat">
+              <span class="gradient-text" style="font-size: var(--text-3xl); font-weight:700;">100°C+</span>
+              <span style="font-size: var(--text-sm); color: var(--color-limestone);">per km in volcanically active zones</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="what-is__visual reveal-right">
+          <div class="earth-diagram" id="earth-diagram" role="img" aria-label="Interactive Earth cross-section diagram">
+            <div class="earth-diagram__layers">
+              <div class="earth-layer" data-depth="0" data-temp="15">
+                <div class="earth-layer__fill" style="background: linear-gradient(135deg, #2D5016, #3A6620);"></div>
+                <span class="earth-layer__label">Surface</span>
+                <span class="earth-layer__temp">~15°C</span>
+              </div>
+              <div class="earth-layer" data-depth="5" data-temp="150">
+                <div class="earth-layer__fill" style="background: linear-gradient(135deg, #5D4037, #795548);"></div>
+                <span class="earth-layer__label">Upper Crust</span>
+                <span class="earth-layer__temp">~150°C</span>
+              </div>
+              <div class="earth-layer" data-depth="35" data-temp="400">
+                <div class="earth-layer__fill" style="background: linear-gradient(135deg, #4A2C0A, #6D3B14);"></div>
+                <span class="earth-layer__label">Lower Crust</span>
+                <span class="earth-layer__temp">~400°C</span>
+              </div>
+              <div class="earth-layer" data-depth="100" data-temp="1300">
+                <div class="earth-layer__fill" style="background: linear-gradient(135deg, #BF360C, #D84315);"></div>
+                <span class="earth-layer__label">Upper Mantle</span>
+                <span class="earth-layer__temp">~1,300°C</span>
+              </div>
+              <div class="earth-layer" data-depth="2900" data-temp="3500">
+                <div class="earth-layer__fill" style="background: linear-gradient(135deg, #E64A19, #FF5722);"></div>
+                <span class="earth-layer__label">Lower Mantle</span>
+                <span class="earth-layer__temp">~3,500°C</span>
+              </div>
+              <div class="earth-layer" data-depth="5100" data-temp="5000">
+                <div class="earth-layer__fill" style="background: linear-gradient(135deg, #F57F17, #FF8F00);"></div>
+                <span class="earth-layer__label">Core</span>
+                <span class="earth-layer__temp">~5,000°C</span>
+              </div>
+            </div>
+            <div class="earth-diagram__depth-indicator">
+              <div class="depth-slider-wrapper">
+                <label for="depth-slider" class="depth-slider-label">Drill Depth</label>
+                <input type="range" id="depth-slider" class="depth-slider" min="0" max="5" value="0" aria-label="Drill to different depths" />
+              </div>
+              <div class="depth-readout" id="depth-readout">
+                <div class="depth-readout__val">
+                  <span class="depth-readout__label">Depth</span>
+                  <span class="depth-readout__value" id="depth-value">0 km</span>
+                </div>
+                <div class="depth-readout__val">
+                  <span class="depth-readout__label">Temperature</span>
+                  <span class="depth-readout__value" id="temp-value" style="color: var(--color-amber);">15°C</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- SECTION 2: HOW DRILLING WORKS                          -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="how-drilling-works" class="section section--dark" aria-labelledby="drilling-heading">
+    <div class="container">
+      <div class="section__label reveal-up">
+        <span class="label-badge">02 / Process</span>
+      </div>
+      <h2 id="drilling-heading" class="section__heading reveal-up">
+        Drilling Through <span class="gradient-text">Kilometers</span> of Rock
+      </h2>
+      <p class="section__lead lead reveal-up">
+        A single geothermal well can take 60–90 days and cost $5–10 million. Every meter drilled is a carefully engineered feat against extreme heat and pressure.
+      </p>
+
+      <div class="drilling__layout">
+        <!-- SVG Diagram (left, sticky) -->
+        <div class="drilling__diagram-wrapper" id="depth-diagram-wrapper">
+          <div class="drilling__diagram" id="drilling-diagram" role="img" aria-label="Animated cross-section showing drill progress">
+            <svg id="depth-svg" viewBox="0 0 300 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- Background geology layers -->
+              <rect x="0" y="0" width="300" height="600" fill="#1A1A2E"/>
+
+              <!-- Rock layers -->
+              <rect class="geo-layer" id="layer-soil" x="0" y="0" width="300" height="50" fill="#2D5016" opacity="0"/>
+              <rect class="geo-layer" id="layer-sediment" x="0" y="50" width="300" height="80" fill="#5D4037" opacity="0"/>
+              <rect class="geo-layer" id="layer-granite" x="0" y="130" width="300" height="120" fill="#4A2C0A" opacity="0"/>
+              <rect class="geo-layer" id="layer-basalt" x="0" y="250" width="300" height="130" fill="#3E1F0A" opacity="0"/>
+              <rect class="geo-layer" id="layer-hot-rock" x="0" y="380" width="300" height="130" fill="#7A1010" opacity="0"/>
+              <rect class="geo-layer" id="layer-reservoir" x="0" y="510" width="300" height="90" fill="#B22222" opacity="0"/>
+
+              <!-- Layer labels -->
+              <text class="layer-label" id="lbl-soil" x="10" y="30" fill="#6A9A3A" font-size="10" font-family="JetBrains Mono, monospace" opacity="0">Topsoil &amp; Fill · 0–30m</text>
+              <text class="layer-label" id="lbl-sediment" x="10" y="100" fill="#8D6E63" font-size="10" font-family="JetBrains Mono, monospace" opacity="0">Sedimentary · 30–200m</text>
+              <text class="layer-label" id="lbl-granite" x="10" y="200" fill="#A1887F" font-size="10" font-family="JetBrains Mono, monospace" opacity="0">Granite/Crystalline · 200–600m</text>
+              <text class="layer-label" id="lbl-basalt" x="10" y="330" fill="#D7CCC8" font-size="10" font-family="JetBrains Mono, monospace" opacity="0">Basalt · 600–1,500m</text>
+              <text class="layer-label" id="lbl-hot-rock" x="10" y="460" fill="#FF8A65" font-size="10" font-family="JetBrains Mono, monospace" opacity="0">Hot Dry Rock · 1,500–2,500m</text>
+              <text class="layer-label" id="lbl-reservoir" x="10" y="545" fill="#FF5252" font-size="10" font-family="JetBrains Mono, monospace" opacity="0">Geothermal Reservoir · 2,500m+</text>
+
+              <!-- Wellbore casing segments -->
+              <rect class="casing-seg" id="casing-1" x="143" y="0" width="14" height="0" fill="none" stroke="#90CAF9" stroke-width="2" opacity="0"/>
+              <rect class="casing-seg" id="casing-2" x="145" y="0" width="10" height="0" fill="none" stroke="#64B5F6" stroke-width="1.5" opacity="0"/>
+              <rect class="casing-seg" id="casing-3" x="147" y="0" width="6" height="0" fill="none" stroke="#42A5F5" stroke-width="1" opacity="0"/>
+
+              <!-- Drill path line (drawn with stroke-dashoffset) -->
+              <line id="drill-path" x1="150" y1="0" x2="150" y2="580"
+                    stroke="#E67E22" stroke-width="2.5" stroke-dasharray="600" stroke-dashoffset="600"
+                    stroke-linecap="round" opacity="0.9"/>
+
+              <!-- Drill bit (animated position) -->
+              <g id="drill-bit" transform="translate(150, 0)">
+                <!-- Drill collar -->
+                <rect x="-5" y="-15" width="10" height="15" fill="#78909C" rx="1"/>
+                <!-- Bit body -->
+                <polygon points="0,-2 -8,8 0,5 8,8" fill="#E67E22"/>
+                <polygon points="-3,5 3,5 0,14" fill="#F39C12"/>
+              </g>
+
+              <!-- Rig at top -->
+              <g id="drill-rig" transform="translate(150, 0)">
+                <!-- Derrick legs -->
+                <line x1="-20" y1="0" x2="-6" y2="-50" stroke="#90A4AE" stroke-width="2"/>
+                <line x1="20" y1="0" x2="6" y2="-50" stroke="#90A4AE" stroke-width="2"/>
+                <line x1="-14" y1="-20" x2="14" y2="-20" stroke="#90A4AE" stroke-width="1.5"/>
+                <line x1="-10" y1="-35" x2="10" y2="-35" stroke="#90A4AE" stroke-width="1.5"/>
+                <!-- Crown block -->
+                <rect x="-6" y="-54" width="12" height="4" fill="#607D8B" rx="1"/>
+                <!-- Platform -->
+                <rect x="-22" y="-4" width="44" height="6" fill="#455A64" rx="1"/>
+              </g>
+
+              <!-- Temperature indicator on right side -->
+              <g id="temp-gauge" transform="translate(270, 50)">
+                <rect x="0" y="0" width="20" height="500" fill="rgba(0,0,0,0.3)" rx="3"/>
+                <rect id="temp-fill" x="0" y="500" width="20" height="0" fill="url(#tempGradient)" rx="3"/>
+                <text x="10" y="-8" text-anchor="middle" fill="#7F8C8D" font-size="9" font-family="JetBrains Mono, monospace">°C</text>
+                <text id="temp-text" x="10" y="520" text-anchor="middle" fill="#F39C12" font-size="9" font-family="JetBrains Mono, monospace">15°</text>
+              </g>
+
+              <!-- Depth markers on left -->
+              <line x1="0" y1="50" x2="15" y2="50" stroke="#34495E" stroke-width="1"/>
+              <text x="17" y="54" fill="#546E7A" font-size="8" font-family="JetBrains Mono, monospace">200m</text>
+              <line x1="0" y1="130" x2="15" y2="130" stroke="#34495E" stroke-width="1"/>
+              <text x="17" y="134" fill="#546E7A" font-size="8" font-family="JetBrains Mono, monospace">600m</text>
+              <line x1="0" y1="250" x2="15" y2="250" stroke="#34495E" stroke-width="1"/>
+              <text x="17" y="254" fill="#546E7A" font-size="8" font-family="JetBrains Mono, monospace">1.5km</text>
+              <line x1="0" y1="380" x2="15" y2="380" stroke="#34495E" stroke-width="1"/>
+              <text x="17" y="384" fill="#546E7A" font-size="8" font-family="JetBrains Mono, monospace">2.5km</text>
+              <line x1="0" y1="510" x2="15" y2="510" stroke="#34495E" stroke-width="1"/>
+              <text x="17" y="514" fill="#FF8A65" font-size="8" font-family="JetBrains Mono, monospace">3km+</text>
+
+              <!-- Temperature gradient definition -->
+              <defs>
+                <linearGradient id="tempGradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#F39C12"/>
+                  <stop offset="50%" stop-color="#E74C3C"/>
+                  <stop offset="100%" stop-color="#C0392B"/>
+                </linearGradient>
+              </defs>
+            </svg>
+
+            <!-- Depth & temperature overlay -->
+            <div class="drill-overlay">
+              <div class="drill-overlay__item">
+                <span class="drill-overlay__label">Depth</span>
+                <span class="drill-overlay__value" id="drill-depth-display">0 m</span>
+              </div>
+              <div class="drill-overlay__item">
+                <span class="drill-overlay__label">Temp</span>
+                <span class="drill-overlay__value" id="drill-temp-display" style="color: var(--color-amber);">15°C</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step Cards (right) -->
+        <div class="drilling__steps" id="drilling-steps">
+          <div class="step-card is-active" data-step="0">
+            <div class="step-card__number">STEP 01</div>
+            <h3 class="step-card__title">Site Assessment</h3>
+            <p class="step-card__body">Before a single drill bit touches rock, extensive surveys map the subsurface. Seismic surveys reveal underground structures, magnetotelluric (MT) surveys detect electrical resistivity, and satellite thermal imaging identifies heat anomalies.</p>
+            <div class="step-card__meta">
+              <div class="step-card__meta-item">
+                <span class="step-card__meta-label">Duration</span>
+                <span class="step-card__meta-value">6–24 months</span>
+              </div>
+              <div class="step-card__meta-item">
+                <span class="step-card__meta-label">Cost</span>
+                <span class="step-card__meta-value">$500K–$2M</span>
+              </div>
+              <div class="step-card__meta-item">
+                <span class="step-card__meta-label">Key tool</span>
+                <span class="step-card__meta-value">MT Survey</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step-card" data-step="1">
+            <div class="step-card__number">STEP 02</div>
+            <h3 class="step-card__title">Surface Preparation & Conductor Casing</h3>
+            <p class="step-card__body">The wellsite is graded and equipped. A large-diameter conductor casing (18–36 inches) is driven or drilled into the ground to 30–60m depth, providing structural support for the wellhead and preventing surface collapse.</p>
+            <div class="step-card__meta">
+              <div class="step-card__meta-item">
+                <span class="step-card__meta-label">Depth</span>
+                <span class="step-card__meta-value">0–60m</span>
+              </div>
+              <div class="step-card__meta-item">
+                <span class="step-card__meta-label">Casing size</span>
+                <span class="step-card__meta-value">18–36"</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step-card" data-step="2">
+            <div class="step-card__number">STEP 03</div>
+            <h3 class="step-card__title">Rotary Drilling (Surface Hole)</h3>
+            <p class="step-card__body">A rotary drill rig drives a large-diameter bit through the first 200–600m. Drilling mud — a specialized fluid mixture — circulates down the drill string, cools the bit, carries rock cuttings to the surface, and maintains wellbore pressure.</p>
+            <div class="step-card__meta">
+              <div class="step-card__meta-item">
+                <span class="step-card__meta-label">Depth</span>
+                <span class="step-card__meta-value">60–600m</span>
+              </div>
+              <div class="step-card__meta-item">
+                <span class="step-card__meta-label">Rate</span>
+                <span class="step-card__meta-value">3–15m/hr</span>
+              </div>
+              <div class="step-card__meta-item">
+                <span class="step-card__meta-label">Bit size</span>
+                <span class="step-card__meta-value">17.5"</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step-card" data-step="3">
+            <div class="step-card__number">STEP 04</div>
+            <h3 class="step-card__title">Intermediate Casing & Cementing</h3>
+            <p class="step-card__body">After each major section is drilled, steel casing is lowered and cemented in place. Cementing fills the gap between the casing and rock, isolating fresh water zones, preventing blowouts, and providing structural integrity against high-temperature steam.</p>
+            <div class="step-card__meta">
+              <div class="step-card__meta-item">
+                <span class="step-card__meta-label">Depth</span>
+                <span class="step-card__meta-value">600–1,500m</span>
+              </div>
+              <div class="step-card__meta-item">
+                <span class="step-card__meta-label">Casing size</span>
+                <span class="step-card__meta-value">9.5–13.375"</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step-card" data-step="4">
+            <div class="step-card__number">STEP 05</div>
+            <h3 class="step-card__title">Production Drilling & Directional Control</h3>
+            <p class="step-card__body">The production section drills into the target reservoir. Directional drilling steers the wellbore at angles, allowing a single surface pad to access multiple subsurface targets. Measurement-While-Drilling (MWD) tools transmit real-time data on temperature, pressure, and formation properties.</p>
+            <div class="step-card__meta">
+              <div class="step-card__meta-item">
+                <span class="step-card__meta-label">Depth</span>
+                <span class="step-card__meta-value">1.5–3km+</span>
+              </div>
+              <div class="step-card__meta-item">
+                <span class="step-card__meta-label">Temp encountered</span>
+                <span class="step-card__meta-value">150–300°C</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step-card" data-step="5">
+            <div class="step-card__number">STEP 06</div>
+            <h3 class="step-card__title">Well Testing & Completion</h3>
+            <p class="step-card__body">Once target depth is reached, the well is tested for flow rate, temperature, and pressure. A wellhead and production casing are installed. A successful well might produce 5–50 kg/s of steam or hot water, enough for 1–10 MW of electrical capacity.</p>
+            <div class="step-card__meta">
+              <div class="step-card__meta-item">
+                <span class="step-card__meta-label">Flow rate</span>
+                <span class="step-card__meta-value">5–50 kg/s</span>
+              </div>
+              <div class="step-card__meta-item">
+                <span class="step-card__meta-label">Capacity</span>
+                <span class="step-card__meta-value">1–10 MW/well</span>
+              </div>
+              <div class="step-card__meta-item">
+                <span class="step-card__meta-label">Success rate</span>
+                <span class="step-card__meta-value">60–80%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- SECTION 3: TYPES OF GEOTHERMAL SYSTEMS                 -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="systems" class="section section--slate" aria-labelledby="systems-heading">
+    <div class="container">
+      <div class="section__label reveal-up">
+        <span class="label-badge">03 / Systems</span>
+      </div>
+      <h2 id="systems-heading" class="section__heading reveal-up">
+        Types of <span class="gradient-text">Geothermal</span> Systems
+      </h2>
+      <p class="section__lead lead reveal-up">
+        Not all geothermal resources are the same. Four fundamentally different technologies tap different resource temperatures and conditions.
+      </p>
+
+      <div class="tabs-wrapper reveal-up">
+        <div class="tab-list" role="tablist" aria-label="Geothermal system types">
+          <button class="tab-btn" role="tab" aria-selected="true" aria-controls="panel-dry" id="tab-dry">
+            Dry Steam
+          </button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-flash" id="tab-flash">
+            Flash Steam
+          </button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-binary" id="tab-binary">
+            Binary Cycle
+          </button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-egs" id="tab-egs">
+            EGS
+          </button>
+        </div>
+
+        <!-- Dry Steam Panel -->
+        <div class="tab-panel is-active" id="panel-dry" role="tabpanel" aria-labelledby="tab-dry">
+          <div class="system-panel">
+            <div class="system-panel__info">
+              <div class="system-panel__header">
+                <span class="tag tag--ember">Oldest Technology · 1904</span>
+                <span class="tag tag--blue">Rarest Type</span>
+              </div>
+              <h3 class="system-panel__title">Dry Steam Plants</h3>
+              <p class="system-panel__desc">Steam from underground reservoirs travels <strong>directly</strong> to the turbine — no water separation needed. Requires underground steam reservoirs above 235°C. Only a handful of locations worldwide have this resource.</p>
+              <div class="system-panel__process">
+                <div class="process-step">
+                  <div class="process-step__icon">💨</div>
+                  <div class="process-step__text">Steam rises directly from reservoir</div>
+                </div>
+                <div class="process-arrow">→</div>
+                <div class="process-step">
+                  <div class="process-step__icon">⚙️</div>
+                  <div class="process-step__text">Steam drives turbine directly</div>
+                </div>
+                <div class="process-arrow">→</div>
+                <div class="process-step">
+                  <div class="process-step__icon">⚡</div>
+                  <div class="process-step__text">Generator produces electricity</div>
+                </div>
+                <div class="process-arrow">→</div>
+                <div class="process-step">
+                  <div class="process-step__icon">💧</div>
+                  <div class="process-step__text">Condensate reinjected</div>
+                </div>
+              </div>
+              <div class="system-panel__facts">
+                <div class="system-fact">
+                  <span class="system-fact__value">235°C+</span>
+                  <span class="system-fact__label">Minimum resource temperature</span>
+                </div>
+                <div class="system-fact">
+                  <span class="system-fact__value">725 MW</span>
+                  <span class="system-fact__label">The Geysers, California — world's largest geothermal complex</span>
+                </div>
+                <div class="system-fact">
+                  <span class="system-fact__value">1904</span>
+                  <span class="system-fact__label">First plant: Larderello, Italy — still operating today</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Flash Steam Panel -->
+        <div class="tab-panel" id="panel-flash" role="tabpanel" aria-labelledby="tab-flash">
+          <div class="system-panel">
+            <div class="system-panel__info">
+              <div class="system-panel__header">
+                <span class="tag tag--ember">Most Common · 50%+ of plants</span>
+                <span class="tag tag--blue">&gt;182°C</span>
+              </div>
+              <h3 class="system-panel__title">Flash Steam Plants</h3>
+              <p class="system-panel__desc">High-pressure hot water (above 182°C) is pumped to the surface where the sudden pressure drop "flashes" it into steam. The steam drives the turbine; remaining liquid is reinjected. Double-flash systems extract even more energy from the remaining hot water.</p>
+              <div class="system-panel__process">
+                <div class="process-step">
+                  <div class="process-step__icon">🌊</div>
+                  <div class="process-step__text">Hot pressurized water rises</div>
+                </div>
+                <div class="process-arrow">→</div>
+                <div class="process-step">
+                  <div class="process-step__icon">💥</div>
+                  <div class="process-step__text">Pressure drops → water flashes to steam</div>
+                </div>
+                <div class="process-arrow">→</div>
+                <div class="process-step">
+                  <div class="process-step__icon">⚙️</div>
+                  <div class="process-step__text">Steam powers turbine</div>
+                </div>
+                <div class="process-arrow">→</div>
+                <div class="process-step">
+                  <div class="process-step__icon">🔄</div>
+                  <div class="process-step__text">Brine reinjected</div>
+                </div>
+              </div>
+              <div class="system-panel__facts">
+                <div class="system-fact">
+                  <span class="system-fact__value">&gt;182°C</span>
+                  <span class="system-fact__label">Minimum resource temperature</span>
+                </div>
+                <div class="system-fact">
+                  <span class="system-fact__value">50%+</span>
+                  <span class="system-fact__label">Of all geothermal power plants use this technology</span>
+                </div>
+                <div class="system-fact">
+                  <span class="system-fact__value">303 MW</span>
+                  <span class="system-fact__label">Hellisheiðarvirkjun, Iceland — largest flash steam plant</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Binary Cycle Panel -->
+        <div class="tab-panel" id="panel-binary" role="tabpanel" aria-labelledby="tab-binary">
+          <div class="system-panel">
+            <div class="system-panel__info">
+              <div class="system-panel__header">
+                <span class="tag tag--green">Fastest Growing</span>
+                <span class="tag tag--ember">57–182°C</span>
+              </div>
+              <h3 class="system-panel__title">Binary Cycle Plants</h3>
+              <p class="system-panel__desc">Works with lower-temperature resources. Geothermal fluid <strong>never contacts the turbine</strong>. Instead, it passes through a heat exchanger, transferring its heat to a secondary "working fluid" (isobutane or isopentane) with a lower boiling point. This fluid vaporizes and drives the turbine in a completely closed loop.</p>
+              <div class="system-panel__process">
+                <div class="process-step">
+                  <div class="process-step__icon">🌡️</div>
+                  <div class="process-step__text">Hot water from well (57–182°C)</div>
+                </div>
+                <div class="process-arrow">→</div>
+                <div class="process-step">
+                  <div class="process-step__icon">🔥</div>
+                  <div class="process-step__text">Heat exchanger transfers energy to working fluid</div>
+                </div>
+                <div class="process-arrow">→</div>
+                <div class="process-step">
+                  <div class="process-step__icon">💨</div>
+                  <div class="process-step__text">Working fluid vaporizes, drives turbine</div>
+                </div>
+                <div class="process-arrow">→</div>
+                <div class="process-step">
+                  <div class="process-step__icon">♻️</div>
+                  <div class="process-step__text">Both fluids reused — zero emissions</div>
+                </div>
+              </div>
+              <div class="system-panel__facts">
+                <div class="system-fact">
+                  <span class="system-fact__value">90%</span>
+                  <span class="system-fact__label">More potential sites unlocked vs steam-only technologies</span>
+                </div>
+                <div class="system-fact">
+                  <span class="system-fact__value">Zero</span>
+                  <span class="system-fact__label">Direct emissions — working fluid stays in closed loop</span>
+                </div>
+                <div class="system-fact">
+                  <span class="system-fact__value">57°C</span>
+                  <span class="system-fact__label">Minimum viable temperature — viable almost everywhere</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EGS Panel -->
+        <div class="tab-panel" id="panel-egs" role="tabpanel" aria-labelledby="tab-egs">
+          <div class="system-panel">
+            <div class="system-panel__info">
+              <div class="system-panel__header">
+                <span class="tag tag--blue">The Future</span>
+                <span class="tag tag--ember">Deep Hot Rock</span>
+              </div>
+              <h3 class="system-panel__title">Enhanced Geothermal Systems (EGS)</h3>
+              <p class="system-panel__desc">EGS creates <em>artificial</em> geothermal reservoirs in dry hot rock where no natural water exists. By drilling 3–10km and hydraulically fracturing the rock, water can be circulated through the newly created fracture network, extracting heat from virtually anywhere on Earth.</p>
+              <div class="system-panel__process">
+                <div class="process-step">
+                  <div class="process-step__icon">🔩</div>
+                  <div class="process-step__text">Drill 3–10km into hot dry rock</div>
+                </div>
+                <div class="process-arrow">→</div>
+                <div class="process-step">
+                  <div class="process-step__icon">💥</div>
+                  <div class="process-step__text">High-pressure water creates fracture network</div>
+                </div>
+                <div class="process-arrow">→</div>
+                <div class="process-step">
+                  <div class="process-step__icon">🌊</div>
+                  <div class="process-step__text">Cold water injected, heats through fractures</div>
+                </div>
+                <div class="process-arrow">→</div>
+                <div class="process-step">
+                  <div class="process-step__icon">⚡</div>
+                  <div class="process-step__text">Superheated water extracted for power</div>
+                </div>
+              </div>
+              <div class="system-panel__facts">
+                <div class="system-fact">
+                  <span class="system-fact__value">100%</span>
+                  <span class="system-fact__label">Of US electricity could theoretically be powered by EGS</span>
+                </div>
+                <div class="system-fact">
+                  <span class="system-fact__value">$400M+</span>
+                  <span class="system-fact__label">US DOE commitment to EGS development (2024)</span>
+                </div>
+                <div class="system-fact">
+                  <span class="system-fact__value">2026</span>
+                  <span class="system-fact__label">First commercial EGS plants expected online (Fervo Energy)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- SECTION 4: TECHNOLOGY & EQUIPMENT                      -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="technology" class="section section--dark" aria-labelledby="technology-heading">
+    <div class="container">
+      <div class="section__label reveal-up">
+        <span class="label-badge">04 / Technology</span>
+      </div>
+      <h2 id="technology-heading" class="section__heading reveal-up">
+        The Machines That <span class="gradient-text">Go Miles Deep</span>
+      </h2>
+      <p class="section__lead lead reveal-up">
+        Geothermal drilling pushes oil & gas technology to its extremes — combining extreme heat resistance with precision engineering at depths of 3,000+ meters.
+      </p>
+
+      <div class="grid-3 stagger-children" id="tech-grid">
+        <div class="glass-card tech-card" data-tech="drill-string">
+          <div class="tech-card__icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="12" y1="2" x2="12" y2="22"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="16" y2="14"/>
+            </svg>
+          </div>
+          <div class="tech-card__toggle">+</div>
+          <h3 class="tech-card__title">Rotary Drill String</h3>
+          <p class="tech-card__desc">A continuous string of hollow steel pipes, each 9–10m long, that rotates the drill bit and transmits drilling fluid. Can extend 3+ km with hundreds of pipe sections.</p>
+          <div class="tech-card__detail">The drill string must withstand enormous rotational torque, compression from its own weight, and temperatures exceeding 300°C at the bit. High-chrome alloy steels and special thread compounds prevent galling at connections.</div>
+        </div>
+
+        <div class="glass-card tech-card" data-tech="drill-bit">
+          <div class="tech-card__icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          </div>
+          <div class="tech-card__toggle">+</div>
+          <h3 class="tech-card__title">PDC & Tricone Bits</h3>
+          <p class="tech-card__desc">Polycrystalline Diamond Compact (PDC) bits use synthetic diamond cutters on a steel body. Tricone bits have three rotating cones with tungsten carbide teeth for hard, abrasive formations.</p>
+          <div class="tech-card__detail">In geothermal, PDC bits can drill 500–1,000m before replacement. At extreme depths, bit temperature can exceed 250°C. Thermal stability of the diamond cutters is a critical engineering challenge unique to geothermal drilling.</div>
+        </div>
+
+        <div class="glass-card tech-card" data-tech="casing">
+          <div class="tech-card__icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18"/>
+            </svg>
+          </div>
+          <div class="tech-card__toggle">+</div>
+          <h3 class="tech-card__title">Steel Casing</h3>
+          <p class="tech-card__desc">Hollow steel pipe sections cemented permanently into the wellbore. Each casing string isolates zones, prevents collapse, and provides a sealed conduit for fluid flow.</p>
+          <div class="tech-card__detail">A typical geothermal well uses 3–4 nested casing strings, each progressively smaller in diameter — 30", 20", 13.375", down to 9.625" production casing. Special H2S-resistant steel grades are used in corrosive environments.</div>
+        </div>
+
+        <div class="glass-card tech-card" data-tech="mud">
+          <div class="tech-card__icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </div>
+          <div class="tech-card__toggle">+</div>
+          <h3 class="tech-card__title">Drilling Fluid (Mud)</h3>
+          <p class="tech-card__desc">A carefully engineered mixture of water, bentonite clay, and chemical additives pumped down the drill string. Cools the bit, carries cuttings to surface, and maintains wellbore pressure.</p>
+          <div class="tech-card__detail">In geothermal wells, standard mud systems can fail at temperatures above 150°C. High-temperature muds use synthetic polymers, potassium-based fluids, or aerated systems. The fluid system is continuously monitored and adjusted throughout drilling.</div>
+        </div>
+
+        <div class="glass-card tech-card" data-tech="bop">
+          <div class="tech-card__icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <div class="tech-card__toggle">+</div>
+          <h3 class="tech-card__title">Blowout Preventer (BOP)</h3>
+          <p class="tech-card__desc">The primary safety device mounted at the wellhead. A series of hydraulically-actuated rams and annular preventers can seal the well in seconds if high-pressure steam or gas threatens to erupt uncontrolled.</p>
+          <div class="tech-card__detail">Geothermal BOPs must handle steam at 250°C+ and pressures of 1,000+ psi. Unlike oil well BOPs designed for liquid hydrocarbons, geothermal BOPs require special elastomer seals that resist both high temperature and corrosive geothermal brines.</div>
+        </div>
+
+        <div class="glass-card tech-card" data-tech="mwd">
+          <div class="tech-card__icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+          </div>
+          <div class="tech-card__toggle">+</div>
+          <h3 class="tech-card__title">Measurement While Drilling (MWD)</h3>
+          <p class="tech-card__desc">Electronic sensors embedded near the drill bit transmit real-time data — inclination, azimuth, temperature, pressure, and formation resistivity — to the surface via mud pulse or electromagnetic telemetry.</p>
+          <div class="tech-card__detail">High-temperature MWD tools are a frontier of geothermal technology. Standard electronics fail above 175°C. Silicon carbide semiconductors and hermetically-sealed high-temp electronics are enabling sensors to survive 300°C+ environments that were impossible a decade ago.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- SECTION 5: ENVIRONMENTAL IMPACT                        -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="impact" class="section section--slate" aria-labelledby="impact-heading">
+    <div class="container">
+      <div class="section__label reveal-up">
+        <span class="label-badge">05 / Environment</span>
+      </div>
+      <h2 id="impact-heading" class="section__heading reveal-up">
+        Clean, Responsible, <span class="gradient-text-green">Sustainable</span>
+      </h2>
+      <p class="section__lead lead reveal-up">
+        Geothermal is one of the cleanest energy sources available — but like all energy, responsible development requires understanding both its advantages and its impacts.
+      </p>
+
+      <div class="impact-layout">
+        <!-- Benefits Column -->
+        <div class="impact-benefits reveal-left">
+          <div class="impact-col-header">
+            <span class="tag tag--green">Benefits</span>
+            <h3 class="impact-col-title">Why Geothermal Wins</h3>
+          </div>
+
+          <div class="impact-stats-grid">
+            <div class="impact-big-stat">
+              <span class="gradient-text-green" style="font-size: var(--text-4xl); font-weight:700; line-height:1;">
+                <span class="stat-number" data-target="99" data-suffix="%" data-duration="1800">0</span>
+              </span>
+              <span class="impact-stat-desc">Less CO₂ than coal per kWh</span>
+            </div>
+            <div class="impact-big-stat">
+              <span class="gradient-text-green" style="font-size: var(--text-4xl); font-weight:700; line-height:1;">24/7</span>
+              <span class="impact-stat-desc">Baseload power (unlike wind &amp; solar)</span>
+            </div>
+            <div class="impact-big-stat">
+              <span class="gradient-text-green" style="font-size: var(--text-4xl); font-weight:700; line-height:1;">
+                &lt;<span class="stat-number" data-target="1" data-suffix="%" data-duration="1200">0</span>
+              </span>
+              <span class="impact-stat-desc">Land use vs equivalent solar farm</span>
+            </div>
+            <div class="impact-big-stat">
+              <span class="gradient-text-green" style="font-size: var(--text-4xl); font-weight:700; line-height:1;">30+</span>
+              <span class="impact-stat-desc">Year productive life per well</span>
+            </div>
+          </div>
+
+          <div class="impact-list mt-8">
+            <div class="impact-item">
+              <div class="impact-item__label">
+                <span>CO₂ Emissions vs. Coal</span>
+                <span>99% cleaner</span>
+              </div>
+              <div class="impact-bar">
+                <div class="impact-bar__fill" style="width: 99%;" data-width="99"></div>
+              </div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-item__label">
+                <span>Capacity Factor (reliability)</span>
+                <span>90–95%</span>
+              </div>
+              <div class="impact-bar">
+                <div class="impact-bar__fill" style="width: 92%;" data-width="92"></div>
+              </div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-item__label">
+                <span>Water recycling rate (binary)</span>
+                <span>~100%</span>
+              </div>
+              <div class="impact-bar">
+                <div class="impact-bar__fill" style="width: 98%;" data-width="98"></div>
+              </div>
+            </div>
+            <div class="impact-item">
+              <div class="impact-item__label">
+                <span>Land use efficiency vs. solar</span>
+                <span>10× more compact</span>
+              </div>
+              <div class="impact-bar">
+                <div class="impact-bar__fill" style="width: 88%;" data-width="88"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Considerations Column -->
+        <div class="impact-considerations reveal-right">
+          <div class="impact-col-header">
+            <span class="tag tag--ember">Considerations</span>
+            <h3 class="impact-col-title">Responsible Management</h3>
+          </div>
+
+          <div class="considerations-list">
+            <div class="consideration-card">
+              <div class="consideration-card__icon">🌋</div>
+              <h4 class="consideration-card__title">Induced Seismicity</h4>
+              <p class="consideration-card__body">Fluid injection can trigger micro-seismic events. Modern <em>traffic light protocols</em> automatically pause operations when events exceed M2.0. Careful site selection and injection monitoring have made this manageable in most projects. Notable exception: Basel, Switzerland (2006 project suspended after M3.4).</p>
+            </div>
+
+            <div class="consideration-card">
+              <div class="consideration-card__icon">🏔️</div>
+              <h4 class="consideration-card__title">Land Subsidence</h4>
+              <p class="consideration-card__body">Extracting large volumes of fluid can cause ground settling. Modern reinjection practices return 95%+ of extracted fluid to the reservoir, nearly eliminating this risk. Wairakei, New Zealand — an early site that did not reinject — experienced measurable subsidence in the 1970s, providing important lessons.</p>
+            </div>
+
+            <div class="consideration-card">
+              <div class="consideration-card__icon">🌬️</div>
+              <h4 class="consideration-card__title">Hydrogen Sulfide (H₂S)</h4>
+              <p class="consideration-card__body">Some reservoirs release H₂S (the "rotten egg" smell). Abatement systems at the plant capture and neutralize emissions. Iceland processes H₂S gas into sulfuric acid, turning a waste product into a commercial commodity.</p>
+            </div>
+
+            <div class="consideration-card">
+              <div class="consideration-card__icon">💧</div>
+              <h4 class="consideration-card__title">Water Consumption</h4>
+              <p class="consideration-card__body">Flash steam plants lose water through cooling tower evaporation. Binary cycle plants are near-zero net water consumers. Compared to coal or nuclear plants, geothermal uses 2–10× less water per kWh generated.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- SECTION 6: GLOBAL APPLICATIONS                         -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="global" class="section section--dark" aria-labelledby="global-heading">
+    <div class="container">
+      <div class="section__label reveal-up">
+        <span class="label-badge">06 / Global</span>
+      </div>
+      <h2 id="global-heading" class="section__heading reveal-up">
+        Geothermal <span class="gradient-text">Around the World</span>
+      </h2>
+      <p class="section__lead lead reveal-up">
+        From Iceland's geysers to Kenya's rift valley, geothermal energy already powers millions of homes across the globe.
+      </p>
+
+      <!-- World Stats -->
+      <div class="world-stats stagger-children">
+        <div class="world-stat glass-card">
+          <span class="world-stat__value"><span class="stat-number" data-target="16" data-suffix=" GW" data-duration="1400">0</span></span>
+          <span class="world-stat__label">Installed electrical capacity</span>
+        </div>
+        <div class="world-stat glass-card">
+          <span class="world-stat__value"><span class="stat-number" data-target="90" data-suffix="+" data-duration="1600">0</span></span>
+          <span class="world-stat__label">Countries with geothermal resources</span>
+        </div>
+        <div class="world-stat glass-card">
+          <span class="world-stat__value"><span class="stat-number" data-target="700" data-suffix="+ TWh" data-duration="1800">0</span></span>
+          <span class="world-stat__label">Annual energy generation</span>
+        </div>
+        <div class="world-stat glass-card">
+          <span class="world-stat__value"><span class="stat-number" data-target="24" data-duration="1000">0</span></span>
+          <span class="world-stat__label">Countries generating geothermal electricity</span>
+        </div>
+      </div>
+
+      <!-- SVG World Map -->
+      <div class="world-map-container reveal-up" id="world-map-container">
+        <div class="world-map-wrapper" role="img" aria-label="World map showing geothermal hotspots">
+          <svg class="world-map" viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" id="world-map-svg">
+            <!-- Simplified world continents -->
+            <!-- North America -->
+            <path class="continent" d="M 80 60 L 280 55 L 290 120 L 270 180 L 230 220 L 200 260 L 160 280 L 120 260 L 90 200 L 70 140 Z" fill="#2C3E50"/>
+            <!-- South America -->
+            <path class="continent" d="M 180 280 L 250 275 L 270 320 L 260 400 L 230 450 L 190 460 L 160 420 L 155 360 L 165 310 Z" fill="#2C3E50"/>
+            <!-- Europe -->
+            <path class="continent" d="M 440 40 L 540 35 L 560 70 L 540 110 L 480 120 L 450 100 L 430 75 Z" fill="#2C3E50"/>
+            <!-- Africa -->
+            <path class="continent" d="M 440 120 L 540 115 L 570 160 L 570 260 L 540 340 L 500 380 L 460 360 L 440 300 L 430 200 L 435 145 Z" fill="#2C3E50"/>
+            <!-- Asia -->
+            <path class="continent" d="M 540 30 L 820 25 L 870 80 L 860 160 L 820 200 L 760 210 L 700 190 L 640 200 L 590 180 L 555 130 L 545 70 Z" fill="#2C3E50"/>
+            <!-- Oceania -->
+            <path class="continent" d="M 760 300 L 840 290 L 880 330 L 870 380 L 830 400 L 780 380 L 755 340 Z" fill="#2C3E50"/>
+            <!-- Japan/Indonesia rough path -->
+            <path class="continent" d="M 820 130 L 860 120 L 870 150 L 855 165 L 820 155 Z" fill="#2C3E50"/>
+            <path class="continent" d="M 720 230 L 830 225 L 840 260 L 800 275 L 730 265 Z" fill="#2C3E50"/>
+
+            <!-- Geothermal hotspot markers -->
+            <!-- Iceland -->
+            <g class="geo-hotspot" data-country="Iceland" data-stat="66% of all energy" data-detail="World leader in per-capita geothermal use" transform="translate(395, 52)">
+              <circle r="8" fill="#E67E22" opacity="0.2" class="pulse-ring"/>
+              <circle r="5" fill="#E67E22" class="hotspot-dot"/>
+            </g>
+            <!-- USA - California -->
+            <g class="geo-hotspot" data-country="USA (California)" data-stat="3,500+ MW installed" data-detail="The Geysers: world's largest geothermal complex" transform="translate(115, 155)">
+              <circle r="8" fill="#E67E22" opacity="0.2" class="pulse-ring"/>
+              <circle r="5" fill="#E67E22" class="hotspot-dot"/>
+            </g>
+            <!-- Mexico -->
+            <g class="geo-hotspot" data-country="Mexico" data-stat="958 MW capacity" data-detail="Cerro Prieto — 4th largest geothermal plant" transform="translate(145, 195)">
+              <circle r="6" fill="#F39C12" opacity="0.2" class="pulse-ring"/>
+              <circle r="4" fill="#F39C12" class="hotspot-dot"/>
+            </g>
+            <!-- Kenya -->
+            <g class="geo-hotspot" data-country="Kenya" data-stat="863 MW — 47% of electricity" data-detail="Olkaria complex on the East African Rift" transform="translate(530, 248)">
+              <circle r="8" fill="#E67E22" opacity="0.2" class="pulse-ring"/>
+              <circle r="5" fill="#E67E22" class="hotspot-dot"/>
+            </g>
+            <!-- Ethiopia -->
+            <g class="geo-hotspot" data-country="Ethiopia" data-stat="7.5 GW potential" data-detail="Tendaho plant on the Afar Triangle" transform="translate(555, 222)">
+              <circle r="6" fill="#F39C12" opacity="0.2" class="pulse-ring"/>
+              <circle r="4" fill="#F39C12" class="hotspot-dot"/>
+            </g>
+            <!-- Italy -->
+            <g class="geo-hotspot" data-country="Italy" data-stat="944 MW — first plant 1904" data-detail="Larderello — birthplace of geothermal power" transform="translate(488, 88)">
+              <circle r="6" fill="#F39C12" opacity="0.2" class="pulse-ring"/>
+              <circle r="4" fill="#F39C12" class="hotspot-dot"/>
+            </g>
+            <!-- Philippines -->
+            <g class="geo-hotspot" data-country="Philippines" data-stat="1,918 MW — 27% of electricity" data-detail="3rd largest geothermal producer globally" transform="translate(800, 193)">
+              <circle r="8" fill="#E67E22" opacity="0.2" class="pulse-ring"/>
+              <circle r="5" fill="#E67E22" class="hotspot-dot"/>
+            </g>
+            <!-- Indonesia -->
+            <g class="geo-hotspot" data-country="Indonesia" data-stat="2,277 MW installed" data-detail="World's 2nd largest geothermal reserves" transform="translate(763, 248)">
+              <circle r="9" fill="#C0392B" opacity="0.2" class="pulse-ring"/>
+              <circle r="6" fill="#C0392B" class="hotspot-dot"/>
+            </g>
+            <!-- New Zealand -->
+            <g class="geo-hotspot" data-country="New Zealand" data-stat="1,005 MW — 18% of electricity" data-detail="Wairakei — second commercial plant in world (1958)" transform="translate(872, 375)">
+              <circle r="7" fill="#E67E22" opacity="0.2" class="pulse-ring"/>
+              <circle r="5" fill="#E67E22" class="hotspot-dot"/>
+            </g>
+            <!-- Japan -->
+            <g class="geo-hotspot" data-country="Japan" data-stat="603 MW (vast untapped potential)" data-detail="110 GW estimated resource — mostly untapped" transform="translate(838, 130)">
+              <circle r="6" fill="#F39C12" opacity="0.2" class="pulse-ring"/>
+              <circle r="4" fill="#F39C12" class="hotspot-dot"/>
+            </g>
+          </svg>
+          <!-- Tooltip -->
+          <div class="map-tooltip" id="map-tooltip" role="tooltip" aria-live="polite">
+            <div class="map-tooltip__country" id="tooltip-country"></div>
+            <div class="map-tooltip__stat" id="tooltip-stat"></div>
+            <div class="map-tooltip__stat" id="tooltip-detail" style="color: var(--color-chalk); margin-top: 4px;"></div>
+          </div>
+        </div>
+        <p class="map-hint">Hover over markers to explore geothermal hotspots</p>
+      </div>
+
+      <!-- Case Study Carousel -->
+      <div class="mt-12 reveal-up">
+        <h3 class="carousel-section-title">Country Case Studies</h3>
+        <div class="carousel" id="case-carousel">
+          <div class="carousel__track" id="carousel-track">
+
+            <div class="carousel__slide">
+              <div class="glass-card case-card">
+                <div class="case-card__flag">🇮🇸</div>
+                <div class="case-card__country">Iceland</div>
+                <div class="case-card__stat">
+                  <span class="case-card__stat-value">66%</span>
+                  <span class="case-card__stat-unit">of total energy</span>
+                </div>
+                <p class="case-card__desc">Sitting atop the Mid-Atlantic Ridge, Iceland uses geothermal for 65% of space heating and 30% of electricity. The Hellisheiðarvirkjun plant (303 MW electric, 400 MW thermal) is the world's largest combined heat and power geothermal installation.</p>
+              </div>
+            </div>
+
+            <div class="carousel__slide">
+              <div class="glass-card case-card">
+                <div class="case-card__flag">🇰🇪</div>
+                <div class="case-card__country">Kenya</div>
+                <div class="case-card__stat">
+                  <span class="case-card__stat-value">47%</span>
+                  <span class="case-card__stat-unit">of electricity</span>
+                </div>
+                <p class="case-card__desc">The Olkaria complex in Kenya's Rift Valley has grown from 45 MW in 1985 to over 863 MW today. Kenya now exports expertise across Africa, helping Ethiopia and Tanzania develop their own resources.</p>
+              </div>
+            </div>
+
+            <div class="carousel__slide">
+              <div class="glass-card case-card">
+                <div class="case-card__flag">🇵🇭</div>
+                <div class="case-card__country">Philippines</div>
+                <div class="case-card__stat">
+                  <span class="case-card__stat-value">27%</span>
+                  <span class="case-card__stat-unit">of electricity</span>
+                </div>
+                <p class="case-card__desc">The Philippines is the world's third largest geothermal producer, with 1,918 MW across the Leyte, Negros, and Luzon island chains. The Makban complex alone (458 MW) powers over 1 million homes.</p>
+              </div>
+            </div>
+
+            <div class="carousel__slide">
+              <div class="glass-card case-card">
+                <div class="case-card__flag">🇮🇩</div>
+                <div class="case-card__country">Indonesia</div>
+                <div class="case-card__stat">
+                  <span class="case-card__stat-value">40%</span>
+                  <span class="case-card__stat-unit">of world's reserves</span>
+                </div>
+                <p class="case-card__desc">Indonesia holds an estimated 29 GW of geothermal potential — 40% of the world's total — but has only developed 2,277 MW to date. Ambitious government targets aim for 9.3 GW by 2035, requiring 60+ new wells per year.</p>
+              </div>
+            </div>
+
+            <div class="carousel__slide">
+              <div class="glass-card case-card">
+                <div class="case-card__flag">🇺🇸</div>
+                <div class="case-card__country">United States</div>
+                <div class="case-card__stat">
+                  <span class="case-card__stat-value">3,722</span>
+                  <span class="case-card__stat-unit">MW installed</span>
+                </div>
+                <p class="case-card__desc">The Geysers in California (725 MW) is the world's largest single geothermal complex. Nevada adds another 800+ MW. Next-gen EGS projects by Fervo Energy in Utah are pioneering closed-loop horizontal drilling for geothermal — a potential game changer.</p>
+              </div>
+            </div>
+
+            <div class="carousel__slide">
+              <div class="glass-card case-card">
+                <div class="case-card__flag">🇳🇿</div>
+                <div class="case-card__country">New Zealand</div>
+                <div class="case-card__stat">
+                  <span class="case-card__stat-value">18%</span>
+                  <span class="case-card__stat-unit">of electricity</span>
+                </div>
+                <p class="case-card__desc">Wairakei (1958) was the world's second commercial geothermal plant and pioneered flash steam technology. New Zealand's Taupo Volcanic Zone continues to provide abundant resources, with the Nga Awa Purua plant (140 MW) holding a world record for single-shaft output.</p>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="carousel-nav">
+            <button class="carousel-btn" id="carousel-prev" aria-label="Previous case study">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="15 18 9 12 15 6"/>
+              </svg>
+            </button>
+            <div class="carousel-dots" id="carousel-dots"></div>
+            <button class="carousel-btn" id="carousel-next" aria-label="Next case study">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="9 18 15 12 9 6"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- SECTION 7: FUTURE OUTLOOK                              -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section id="future" class="section section--abyss" aria-labelledby="future-heading">
+    <div class="container">
+      <div class="section__label reveal-up">
+        <span class="label-badge">07 / Future</span>
+      </div>
+      <h2 id="future-heading" class="section__heading reveal-up">
+        The Geothermal <span class="gradient-text">Future</span>
+      </h2>
+      <p class="section__lead lead reveal-up">
+        The technology exists. The resources are global. What's changing is the economics, the engineering, and the political will.
+      </p>
+
+      <div class="timeline-wrapper reveal-up">
+        <div class="timeline-horizontal" id="future-timeline">
+
+          <div class="timeline-node" data-year="Now">
+            <div class="timeline-node__year">2024–25</div>
+            <div class="timeline-node__dot"></div>
+            <div class="timeline-node__content">
+              <h4 class="timeline-node__title">EGS Demonstration Era</h4>
+              <p class="timeline-node__body">Fervo Energy's Utah project delivers first commercial EGS electricity. Next-gen drill bits reduce well costs by 30%. 1.5 GW of new capacity added globally. DOE "Enhanced Geothermal Shot" program accelerates.</p>
+              <span class="confidence-badge confidence-badge--high">High confidence</span>
+            </div>
+          </div>
+
+          <div class="timeline-node" data-year="2027">
+            <div class="timeline-node__year">2026–28</div>
+            <div class="timeline-node__dot"></div>
+            <div class="timeline-node__content">
+              <h4 class="timeline-node__title">Cost Breakthrough</h4>
+              <p class="timeline-node__body">DOE target: $45/MWh geothermal (from ~$80/MWh today). First commercial-scale EGS plants online. AI-optimized drilling planning reduces well costs by 40–50%. Global capacity crosses 20 GW.</p>
+              <span class="confidence-badge confidence-badge--high">High confidence</span>
+            </div>
+          </div>
+
+          <div class="timeline-node" data-year="2030">
+            <div class="timeline-node__year">2030</div>
+            <div class="timeline-node__dot"></div>
+            <div class="timeline-node__content">
+              <h4 class="timeline-node__title">Closed-Loop Goes Commercial</h4>
+              <p class="timeline-node__body">Closed-loop geothermal (circulating fluid in sealed pipes — no fracking required) becomes commercially viable, eliminating induced seismicity concerns. Estimated 60 GW globally installed. Direct lithium extraction from geothermal brine becomes standard practice.</p>
+              <span class="confidence-badge confidence-badge--medium">Medium confidence</span>
+            </div>
+          </div>
+
+          <div class="timeline-node" data-year="2035">
+            <div class="timeline-node__year">2035</div>
+            <div class="timeline-node__dot"></div>
+            <div class="timeline-node__content">
+              <h4 class="timeline-node__title">Deep Drilling Revolution</h4>
+              <p class="timeline-node__body">New drilling technologies (plasma, millimeter-wave energy, laser) reach 15km commercially. Geothermal becomes cost-competitive everywhere without subsidies. Co-production of lithium and other critical minerals from brine creates a second revenue stream.</p>
+              <span class="confidence-badge confidence-badge--medium">Medium confidence</span>
+            </div>
+          </div>
+
+          <div class="timeline-node" data-year="2050">
+            <div class="timeline-node__year">2050</div>
+            <div class="timeline-node__dot"></div>
+            <div class="timeline-node__content">
+              <h4 class="timeline-node__title">Geothermal Everywhere</h4>
+              <p class="timeline-node__body">Potential: 300+ GW globally. EGS could supply 10%+ of world electricity. With sufficiently deep drilling (10+ km), virtually every location on Earth has access to geothermal energy. "Energy independence" becomes achievable for most nations.</p>
+              <span class="confidence-badge confidence-badge--speculative">Speculative</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Closing CTA -->
+      <div class="future-cta reveal-up">
+        <div class="glass-card future-cta__card">
+          <h3 class="future-cta__title">Geothermal is ready. Are we?</h3>
+          <p class="future-cta__body">The technology exists. The resources are global. The economics are improving rapidly. What's needed is investment, policy support, and public awareness — the same ingredients that drove the solar and wind revolutions.</p>
+          <div class="future-cta__actions">
+            <a href="#what-is" class="btn btn--primary">Start From the Beginning</a>
+            <a href="#how-drilling-works" class="btn btn--ghost">How Drilling Works</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- FOOTER                                                  -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <span class="nav__logo-text">&lt;GEOTHERMAL /&gt;</span>
+          <p class="footer__tagline">Educational resource on geothermal drilling technology</p>
+        </div>
+        <div class="footer__sources">
+          <h4 class="footer__sources-title">Sources &amp; Further Reading</h4>
+          <ul class="footer__sources-list">
+            <li>IEA — International Energy Agency</li>
+            <li>IRENA — International Renewable Energy Agency</li>
+            <li>US DOE — Department of Energy, Geothermal Technologies Office</li>
+            <li>GEA — Geothermal Energy Association</li>
+            <li>ThinkGeoEnergy</li>
+            <li>Fervo Energy — EGS Research</li>
+          </ul>
+        </div>
+        <div class="footer__nav">
+          <h4 class="footer__nav-title">Sections</h4>
+          <ul class="footer__nav-list">
+            <li><a href="#what-is">What Is Geothermal</a></li>
+            <li><a href="#how-drilling-works">How Drilling Works</a></li>
+            <li><a href="#systems">System Types</a></li>
+            <li><a href="#technology">Technology</a></li>
+            <li><a href="#impact">Environmental Impact</a></li>
+            <li><a href="#global">Global Applications</a></li>
+            <li><a href="#future">Future Outlook</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>Educational content. Data sourced from IEA, IRENA, US DOE, and GEA publications.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- JavaScript Modules -->
+  <script src="js/nav.js"></script>
+  <script src="js/scroll-animations.js"></script>
+  <script src="js/counter.js"></script>
+  <script src="js/tabs.js"></script>
+  <script src="js/depth-diagram.js"></script>
+  <script src="js/parallax.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,277 @@
+/* ─── Responsive: Mobile First ───────────────────────────── */
+/* Base = mobile (< 640px)  */
+/* sm: 640px  */
+/* md: 768px  */
+/* lg: 1024px */
+/* xl: 1280px */
+
+
+/* ─── Show Hamburger, Hide Desktop Nav ───────────────────── */
+@media (max-width: 767px) {
+  .nav__links {
+    display: none;
+  }
+
+  .nav__hamburger {
+    display: flex;
+  }
+
+  /* ─── Hero ─────────────────────────────────────────────── */
+  .hero__heading {
+    font-size: clamp(2.4rem, 10vw, 3.5rem);
+  }
+
+  .hero__stats {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .hero__stat {
+    border-left: none !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding: var(--space-4) var(--space-5);
+    min-width: unset;
+  }
+
+  .hero__stat:first-child {
+    border-top: none;
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* ─── What Is ──────────────────────────────────────────── */
+  .grid-2,
+  .grid-2-asymmetric {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+
+  /* ─── Drilling ─────────────────────────────────────────── */
+  .drilling__layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .drilling__diagram-wrapper {
+    position: relative;
+    top: unset;
+    max-width: 280px;
+    margin-inline: auto;
+  }
+
+  .drilling__steps {
+    padding-block: 0;
+  }
+
+  /* Hide non-active step cards on mobile */
+  .step-card:not(.is-active) {
+    display: none;
+  }
+
+  /* ─── Systems ──────────────────────────────────────────── */
+  .system-panel__facts {
+    grid-template-columns: 1fr;
+  }
+
+  .system-panel__process {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .process-arrow {
+    transform: rotate(90deg);
+  }
+
+  /* ─── Tech Grid ────────────────────────────────────────── */
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  /* ─── Impact ───────────────────────────────────────────── */
+  .impact-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+
+  .impact-stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* ─── Global ───────────────────────────────────────────── */
+  .world-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+  }
+
+  /* ─── Future Timeline ──────────────────────────────────── */
+  .timeline-horizontal {
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .timeline-horizontal::before {
+    top: 0;
+    bottom: 0;
+    left: 20px;
+    right: unset;
+    width: 2px;
+    height: auto;
+    background: linear-gradient(to bottom, var(--color-ember), var(--color-basalt) 80%, transparent);
+  }
+
+  .timeline-node {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+
+  .timeline-node__year {
+    font-size: 10px;
+    width: 44px;
+    flex-shrink: 0;
+    text-align: right;
+    padding-top: 4px;
+  }
+
+  .timeline-node__dot {
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .timeline-node__content {
+    flex: 1;
+  }
+
+  /* ─── Footer ───────────────────────────────────────────── */
+  .footer__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  /* ─── Future CTA ───────────────────────────────────────── */
+  .future-cta__card {
+    padding: var(--space-8) var(--space-6);
+  }
+
+  .future-cta__actions {
+    flex-direction: column;
+  }
+
+  .future-cta__actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
+/* ─── Tablet (640px–1023px) ──────────────────────────────── */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .grid-3 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .drilling__layout {
+    grid-template-columns: 280px 1fr;
+    gap: var(--space-8);
+  }
+
+  .system-panel__facts {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .world-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+  }
+
+  .footer__inner > :first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+
+/* ─── Desktop (1024px+) ──────────────────────────────────── */
+@media (min-width: 1024px) {
+  /* Show desktop nav fully */
+  .nav__links {
+    display: flex;
+  }
+
+  /* Timeline horizontal layout (already default on desktop) */
+  .timeline-horizontal {
+    flex-direction: row;
+  }
+
+  /* Drilling steps — show all cards, active one highlighted */
+  .step-card:not(.is-active) {
+    display: block;
+    opacity: 0.6;
+  }
+
+  .step-card.is-active {
+    opacity: 1;
+  }
+}
+
+
+/* ─── Large Desktop (1280px+) ────────────────────────────── */
+@media (min-width: 1280px) {
+  .drilling__layout {
+    grid-template-columns: 380px 1fr;
+  }
+}
+
+
+/* ─── Reduced Motion Override ────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .hero__word {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero__bg {
+    animation: none;
+  }
+
+  .pulse-ring {
+    animation: none;
+  }
+
+  .timeline-node__dot {
+    animation: none;
+  }
+
+  .scroll-indicator {
+    display: none;
+  }
+}
+
+
+/* ─── High Contrast / Accessibility ─────────────────────── */
+@media (forced-colors: active) {
+  .glass-card,
+  .step-card,
+  .consideration-card {
+    border: 2px solid ButtonText;
+  }
+
+  .gradient-text,
+  .gradient-text-green {
+    -webkit-text-fill-color: unset;
+    background: none;
+    color: inherit;
+  }
+}

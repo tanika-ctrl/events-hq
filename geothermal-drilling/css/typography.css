@@ -1,0 +1,93 @@
+/* ─── Font Import ────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ─── Base Text ──────────────────────────────────────────── */
+body {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: 400;
+  line-height: var(--leading-normal);
+}
+
+/* ─── Headings ───────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-primary);
+  font-weight: 700;
+  line-height: var(--leading-tight);
+  color: var(--color-steam);
+}
+
+h1 { font-size: var(--text-hero); line-height: 1.0; }
+h2 { font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl)); }
+h3 { font-size: var(--text-xl); }
+h4 { font-size: var(--text-lg); }
+
+/* ─── Paragraph / Body ───────────────────────────────────── */
+p {
+  color: var(--color-chalk);
+  line-height: var(--leading-normal);
+}
+
+.lead {
+  font-size: var(--text-lg);
+  font-weight: 300;
+  color: var(--color-chalk);
+  line-height: 1.7;
+}
+
+/* ─── Labels & Badges ────────────────────────────────────── */
+.label-badge {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ember);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.label-badge::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--color-ember);
+  border-radius: 50%;
+}
+
+/* ─── Gradient Text ──────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-ember) 0%, var(--color-amber) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-green {
+  background: linear-gradient(135deg, var(--color-geothermal) 0%, var(--color-geothermal-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Mono / Code Inline ─────────────────────────────────── */
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+/* ─── Section Heading Pattern ────────────────────────────── */
+.section__label {
+  margin-bottom: var(--space-4);
+}
+
+.section__heading {
+  margin-bottom: var(--space-6);
+}
+
+.section__lead {
+  max-width: 60ch;
+  margin-bottom: var(--space-12);
+}
