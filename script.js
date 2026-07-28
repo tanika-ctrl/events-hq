@@ -11,7 +11,8 @@ mobileNav.querySelectorAll('a').forEach(a => {
 
 const form = document.getElementById('contactForm');
 const note = document.getElementById('formNote');
-
-form.addEventListener('submit', () => {
-    note.textContent = "Sending...";
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  note.textContent = "Thanks — we've received your brief and will be in touch shortly.";
+  form.reset();
 });
